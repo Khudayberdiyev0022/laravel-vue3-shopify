@@ -167,7 +167,7 @@
         <a href="index.html" class="nav-link"><i data-feather="home"></i><span>Bosh sahifa</span></a>
       </li>
       <li class="dropdown">
-        <a href="index.html" class="nav-link"><i data-feather="clock"></i><span>Qabul yili</span></a>
+        <a href="{{ route('admissions.index') }}" class="nav-link"><i data-feather="clock"></i><span>Qabul yili</span></a>
       </li>
       <li class="dropdown">
         <a href="index.html" class="nav-link"><i data-feather="users"></i><span>Foydalanuvchilar</span></a>

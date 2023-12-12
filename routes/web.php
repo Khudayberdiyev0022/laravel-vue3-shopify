@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::resource('admissions', \App\Http\Controllers\AdmissionController::class);
