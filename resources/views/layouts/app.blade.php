@@ -11,7 +11,7 @@
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-{{--  <link rel="stylesheet" href="{{ asset('assets/bundles/prism/prism.css') }}">--}}
+  <link rel="stylesheet" href="{{ asset('assets/bundles/prism/prism.css') }}">
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
@@ -20,9 +20,13 @@
   <link rel='shortcut icon' type='image/x-icon' href='{{ asset('assets/img/favicon.ico') }}'/>
   <!-- Scripts -->
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+  <style>
+    .card .card-header .btn:not(.note-btn) {
+      border-radius: 0;
+    }
+  </style>
 </head>
 <body>
-
 <div class="loader"></div>
 <div id="app">
   <div class="main-wrapper main-wrapper-1">

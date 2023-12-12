@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admission;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -13,8 +14,8 @@ class AdmissionController extends Controller
    */
   public function index(): View
   {
-    $admissions = Admission::query()->get();
-
+    $admissions = Admission::query()->latest()->paginate(3);
+//    dd($admissions);
     return view('admissions.index', compact('admissions'));
   }
 
@@ -31,7 +32,16 @@ class AdmissionController extends Controller
    */
   public function store(Request $request)
   {
-    //
+//    dd($request->all());
+    $data = $request->validate([
+      'year'       => 'required|digits:4|integer|min:1900|max:'.(date('Y') + 1),
+      'start_date' => 'required|date',
+      'end_date'   => 'required|date',
+    ]);
+//    dd($data);
+    Admission::query()->create($data);
+
+    return redirect()->route('admissions.index');
   }
 
   /**
