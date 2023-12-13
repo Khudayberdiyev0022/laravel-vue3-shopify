@@ -1,97 +1,71 @@
 @extends('layouts.app')
-
 @section('content')
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>150</h3>
 
-  <div class="row ">
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="card-statistic-4">
-          <div class="align-items-center justify-content-between">
-            <div class="row ">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                <div class="card-content">
-                  <h5 class="font-15">Talabalar</h5>
-                  <h2 class="mb-3 font-18">258</h2>
-                  <p class="mb-0"><span class="col-green">10%</span> Increase</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                <div class="banner-img">
-                  <img src="assets/img/banner/1.png" alt="">
-                </div>
-              </div>
+              <p>New Orders</p>
             </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="card-statistic-4">
-          <div class="align-items-center justify-content-between">
-            <div class="row ">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                <div class="card-content">
-                  <h5 class="font-15">Jami fanlar</h5>
-                  <h2 class="mb-3 font-18">1,287</h2>
-                  <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                <div class="banner-img">
-                  <img src="assets/img/banner/2.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="card-statistic-4">
-          <div class="align-items-center justify-content-between">
-            <div class="row ">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                <div class="card-content">
-                  <h5 class="font-15">Professorlar</h5>
-                  <h2 class="mb-3 font-18">128</h2>
-                  <p class="mb-0"><span class="col-green">18%</span>
-                    Increase</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                <div class="banner-img">
-                  <img src="assets/img/banner/3.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="card-statistic-4">
-          <div class="align-items-center justify-content-between">
-            <div class="row ">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                <div class="card-content">
-                  <h5 class="font-15">Davomatlar</h5>
-                  <h2 class="mb-3 font-18">$48,697</h2>
-                  <p class="mb-0"><span class="col-green">42%</span> Increase</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                <div class="banner-img">
-                  <img src="assets/img/banner/4.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
 
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
 @endsection
