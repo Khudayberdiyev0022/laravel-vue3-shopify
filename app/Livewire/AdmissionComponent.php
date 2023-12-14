@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Admission;
 use Illuminate\View\View;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,16 +12,18 @@ class AdmissionComponent extends Component
 {
   use WithPagination;
 
-  public string $year         = '';
-  public string $start_date   = '';
-  public string $end_date     = '';
-  public string $admission_id = '';
+  public string $year, $start_date, $end_date, $admission_id;
 
-  protected array $rules = [
+  #[Validate([
     'year'       => 'required|digits:4|integer|min:2020|max:2030',
     'start_date' => 'required|date',
     'end_date'   => 'required|date',
-  ];
+  ])]
+  public function create(): void
+  {
+    $admission = new Admission();
+    $this->dispatch('show-create');
+  }
 
   public function store(): void
   {
@@ -30,10 +33,8 @@ class AdmissionComponent extends Component
     $this->close();
   }
 
-  public function show($id)
+  public function show(Admission $admission): void
   {
-    $admission = Admission::query()->where('id', $id)->first();
-//    dd($admission);
     $this->year       = $admission->year;
     $this->start_date = $admission->start_date;
     $this->end_date   = $admission->end_date;
@@ -41,9 +42,9 @@ class AdmissionComponent extends Component
     $this->dispatch('show-view');
   }
 
-  public function edit($id): void
+  public function edit(Admission $admission): void
   {
-    $admission          = Admission::query()->findOrFail($id);
+//    $admission          = Admission::query()->findOrFail($id);
     $this->admission_id = $admission->id;
     $this->year         = $admission->year;
     $this->start_date   = $admission->start_date;
@@ -63,9 +64,9 @@ class AdmissionComponent extends Component
     $this->close();
   }
 
-  public function delete($id): void
+  public function delete(Admission $admission): void
   {
-    $this->admission_id = $id;
+    $this->admission_id = $admission->id;
 
     $this->dispatch('show-delete');
   }
