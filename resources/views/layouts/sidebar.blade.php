@@ -36,7 +36,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-header">Asosiy</li>
         <li class="nav-item">
-          <a href="{{ route('index') }}" class="nav-link {{ activeLink('index') }}">
+          <a href="{{ route('index') }}"  class="nav-link {{ activeLink('index') }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               <span>Bosh sahifa</span>
@@ -44,7 +44,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions') }}">
+          <a  href="{{ route('admissions') }}"  class="nav-link {{ activeLink('admissions') }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               <span>Qabul yili</span>
@@ -317,7 +317,7 @@
         </li>
         <li class="nav-header">Tuzilma</li>
         <li class="nav-item">
-          <a href="{{ route('departments') }}" class="nav-link {{ activeLink('departments') }}">
+          <a href="{{ route('departments') }}"  class="nav-link {{ activeLink('departments') }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               <span>Bo'limlar</span>
