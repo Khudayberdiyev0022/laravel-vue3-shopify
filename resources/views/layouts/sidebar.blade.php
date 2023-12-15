@@ -44,7 +44,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admissions.index') }}" class="nav-link {{ activeLink('admissions.index') }}">
+          <a href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions') }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               <span>Qabul yili</span>
@@ -317,7 +317,7 @@
         </li>
         <li class="nav-header">Tuzilma</li>
         <li class="nav-item">
-          <a href="{{ route('departments.index') }}" class="nav-link {{ activeLink('departments.index') }}">
+          <a href="{{ route('departments') }}" class="nav-link {{ activeLink('departments') }}">
             <i class="nav-icon fas fa-th"></i>
             <p>
               <span>Bo'limlar</span>

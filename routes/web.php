@@ -20,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-Route::view('admissions', 'admissions.index')->name('admissions.index');
-Route::view('departments', 'departments.index')->name('departments.index');
+Route::get('admissions', \App\Livewire\AdmissionComponent::class)->name('admissions');
+Route::get('departments', \App\Livewire\DepartmentComponent::class)->name('departments');

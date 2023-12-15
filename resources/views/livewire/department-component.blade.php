@@ -1,15 +1,21 @@
 <section class="content">
   <div class="container-fluid">
+
     {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12">
         @include('components.alert')
         <div class="card">
+          <div wire:loading class="vh-100 position-relative opacity-25">
+            <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">
+              Loading...
+            </p>
+          </div>
           <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
               <h3 class="card-title">Departments</h3>
-              <button wire:click="create" class="btn btn-success" ><i class="fas fa-plus"></i> Qo'shish</button>
+              <button wire:click="create" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
             </div>
           </div>
           <!-- /.card-header -->
@@ -33,9 +39,9 @@
                   <td>{{ $department->email }}</td>
                   <td>
                     <div class="d-flex">
-                      <button wire:click="show({{ $department->id }})" class="btn btn-sm btn-secondary" ><i class="fas fa-eye"></i></button>
-                      <button wire:click="edit({{ $department->id }})" class="btn btn-sm btn-primary mx-2" ><i class="fas fa-pencil-alt"></i></button>
-                      <button wire:click="delete({{ $department->id }})" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></button>
+                      <button wire:click="show({{ $department->id }})" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                      <button wire:click="edit({{ $department->id }})" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
+                      <button wire:click="delete({{ $department->id }})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                     </div>
                   </td>
                 </tr>
@@ -58,7 +64,7 @@
   <x-modal id="create">
     <x-slot name="title">Добавить</x-slot>
     <x-slot name="body">
-      <form wire:submit.prevent="store">
+      <form wire:submit="store">
         <ul class="nav nav-tabs mb-3" id="custom-tabs-four-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="uz-tab" data-toggle="pill" href="#uz" role="tab" aria-controls="uz" aria-selected="true">UZ</a>
@@ -86,7 +92,7 @@
           <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="ru-tab">
             <div class="form-group">
               <label>Title RU</label>
-              <input type="text" wire:model="title_ru"  class="form-control @error('title_ru') is-invalid @enderror">
+              <input type="text" wire:model="title_ru" class="form-control @error('title_ru') is-invalid @enderror">
               @error('title_ru')
               <span class="invalid-feedback">{{ $message }}</span>
               @enderror
@@ -160,7 +166,7 @@
   <x-modal id="edit">
     <x-slot name="title">Редактировать</x-slot>
     <x-slot name="body">
-      <form wire:submit.prevent="update">
+      <form wire:submit="update">
         <ul class="nav nav-tabs mb-3" id="custom-tabs-four-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="edit-uz-tab" data-toggle="pill" href="#edit-uz" role="tab" aria-controls="edit-uz" aria-selected="true">UZ</a>
@@ -188,7 +194,7 @@
           <div class="tab-pane fade" id="edit-ru" role="tabpanel" aria-labelledby="edit-ru-tab">
             <div class="form-group">
               <label>Title RU</label>
-              <input type="text" wire:model="title_ru"  class="form-control @error('title_ru') is-invalid @enderror">
+              <input type="text" wire:model="title_ru" class="form-control @error('title_ru') is-invalid @enderror">
               @error('title_ru')
               <span class="invalid-feedback">{{ $message }}</span>
               @enderror

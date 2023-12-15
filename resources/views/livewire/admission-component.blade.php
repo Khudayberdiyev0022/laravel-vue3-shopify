@@ -1,15 +1,20 @@
-<section class="content">
+<section class="content" >
   <div class="container-fluid">
-{{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
+    {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12">
         @include('components.alert')
         <div class="card">
+{{--          <div wire:loading class="vh-100 position-relative opacity-75">--}}
+{{--            <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">--}}
+{{--              Loading...--}}
+{{--            </p>--}}
+{{--          </div>--}}
           <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
               <h3 class="card-title">Admissions</h3>
-              <button wire:click="create" class="btn btn-success" ><i class="fas fa-plus"></i> Qo'shish</button>
+              <button wire:click="create" wire:keydown.escape="close" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
             </div>
           </div>
           <!-- /.card-header -->
@@ -33,9 +38,9 @@
                   <td>{{ $admission->end_date }}</td>
                   <td>
                     <div class="d-flex">
-                      <button wire:click="show({{ $admission->id }})" class="btn btn-sm btn-secondary" ><i class="fas fa-eye"></i></button>
-                      <button wire:click="edit({{ $admission->id }})" class="btn btn-sm btn-primary mx-2" ><i class="fas fa-pencil-alt"></i></button>
-                      <button wire:click="delete({{ $admission->id }})" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></button>
+                      <button wire:click="show({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                      <button wire:click="edit({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
+                      <button wire:click="delete({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                     </div>
                   </td>
                 </tr>
@@ -55,10 +60,10 @@
     <!-- /.row -->
   </div>
 
-  <x-modal id="create">
+  <x-modal id="create" >
     <x-slot name="title">Добавить</x-slot>
     <x-slot name="body">
-      <form wire:submit.prevent="store">
+      <form wire:submit="store">
         <div class="form-group">
           <label>Year</label>
           <input type="number" wire:model="year" onKeyDown="if(this.value.length==4) return false;" class="form-control @error('year') is-invalid @enderror">
@@ -89,9 +94,9 @@
     </x-slot>
   </x-modal>
 
-  <x-modal id="show">
+  <x-modal id="show" >
     <x-slot name="title">Admission Information</x-slot>
-    <x-slot name="body">
+    <x-slot name="body" >
       <table class="table table-bordered">
         <tbody>
         <tr>
@@ -116,7 +121,7 @@
   <x-modal id="edit">
     <x-slot name="title">Редактировать</x-slot>
     <x-slot name="body">
-      <form wire:submit.prevent="update">
+      <form wire:submit="update">
         <div class="form-group">
           <label>Year</label>
           <input type="number" wire:model="year" class="form-control @error('year') is-invalid @enderror">

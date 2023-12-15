@@ -91,6 +91,7 @@ class DepartmentComponent extends Component
     $this->dispatch('close-modal');
   }
 
+
   public function render(): View
   {
     $departments = Department::query()->latest()->paginate(3);

@@ -44,7 +44,6 @@ class AdmissionComponent extends Component
 
   public function edit(Admission $admission): void
   {
-//    $admission          = Admission::query()->findOrFail($id);
     $this->admission_id = $admission->id;
     $this->year         = $admission->year;
     $this->start_date   = $admission->start_date;
