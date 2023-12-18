@@ -110,7 +110,7 @@ return [
   |
   */
 
-  'faker_locale' => 'en_US',
+  'faker_locale' => 'uz_UZ',
 
   /*
   |--------------------------------------------------------------------------
@@ -161,6 +161,7 @@ return [
      * Package Service Providers...
      */
     Barryvdh\Debugbar\ServiceProvider::class,
+    Spatie\Permission\PermissionServiceProvider::class,
 
     /*
      * Application Service Providers...

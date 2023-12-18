@@ -29,28 +29,37 @@
       </div>
     </div>
 
+
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-header">Asosiy</li>
-        <li class="nav-item">
-          <a href="{{ route('index') }}"  class="nav-link {{ activeLink('index') }}">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Bosh sahifa</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a  href="{{ route('admissions') }}"  class="nav-link {{ activeLink('admissions') }}">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Qabul yili</span>
-            </p>
-          </a>
-        </li>
+        @canany(['role-create', 'role-edit', 'role-delete'])
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('roles.index') }}">
+              <i class="nav-icon fas fa-th"></i>
+              Rollar
+            </a>
+          </li>
+        @endcanany
+        @canany(['user-create', 'user-edit', 'user-delete'])
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('users.index') }}">
+              <i class="nav-icon fas fa-th"></i>
+              Foydalanuvchilar
+            </a>
+          </li>
+        @endcanany
+        @canany(['admission-create', 'admission-edit', 'admission-delete'])
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admissions') }}">
+              <i class="nav-icon fas fa-th"></i>
+              Qabul yili
+            </a>
+          </li>
+        @endcanany
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
@@ -412,6 +421,22 @@
           </a>
         </li>
         <li class="nav-header">Tizim administratori</li>
+        <li class="nav-item">
+          <a href="{{ route('roles.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              <span>Rollar</span>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('permissions.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              <span>Huquqlar</span>
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-th"></i>

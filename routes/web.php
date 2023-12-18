@@ -20,5 +20,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::resource('roles', \App\Http\Controllers\RoleController::class);
+Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
+Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::get('admissions', \App\Livewire\AdmissionComponent::class)->name('admissions');
 Route::get('departments', \App\Livewire\DepartmentComponent::class)->name('departments');

@@ -11,6 +11,15 @@ class DepartmentComponent extends Component
 {
   public string|null $title_uz, $title_ru, $title_en, $title_ar, $phone, $email, $department_id;
 
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware('permission:department-create|department-edit|department-delete', ['only' => ['index','show']]);
+    $this->middleware('permission:department-create', ['only' => ['create','store']]);
+    $this->middleware('permission:department-edit', ['only' => ['edit','update']]);
+    $this->middleware('permission:department-delete', ['only' => ['destroy']]);
+  }
+
   #[Validate([
     'title_uz' => 'required|string|max:255',
     'title_ru' => 'nullable|string|max:255',

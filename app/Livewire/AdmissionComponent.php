@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Admission;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -13,6 +14,18 @@ class AdmissionComponent extends Component
   use WithPagination;
 
   public string $year, $start_date, $end_date, $admission_id;
+
+  /**
+   * @throws AuthorizationException
+   */
+  public function mount(): void
+  {
+    $this->authorize('auth');
+    $this->authorize('permission:admission-create|admission-edit|admission-delete', ['only' => ['index','show']]);
+    $this->authorize('permission:admission-create', ['only' => ['create','store']]);
+    $this->authorize('permission:admission-edit', ['only' => ['edit','update']]);
+    $this->authorize('permission:admission-delete', ['only' => ['destroy']]);
+  }
 
   #[Validate([
     'year'       => 'required|digits:4|integer|min:2020|max:2030',
