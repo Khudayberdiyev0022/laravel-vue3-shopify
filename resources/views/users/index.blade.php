@@ -24,6 +24,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Roles</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -34,10 +35,22 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ \Illuminate\Support\Str::mask($user->email, '*', -15 , 3) }}</td>
                     <td>
-                      @forelse ($user->getRoleNames() as $role)
+                      @foreach($user->getRoleNames() as $role)
                         <span class="badge bg-primary">{{ $role }}</span>
-                      @empty
-                      @endforelse
+                      @endforeach
+                    </td>
+                    <td>
+                      <input
+                          type="checkbox"
+                          data-id="{{$user->id}}"
+                          class="toggle-class"
+                          data-onstyle="success"
+                          data-offstyle="danger"
+                          data-toggle="toggle"
+                          data-on="Active"
+                          data-off="InActive"
+                          {{ $user->status ? 'checked' : '' }}
+                      >
                     </td>
                     <td class="d-flex">
                       @if (!in_array('Super Admin', $user->getRoleNames()->toArray() ?? []) )
@@ -64,3 +77,26 @@
   </section>
 
 @endsection
+
+@push('script')
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script>
+      $(function() {
+          $('.toggle-class').change(function() {
+              let status = $(this).prop('checked') === true ? 1 : 0;
+              let user_id = $(this).data('id');
+
+              $.ajax({
+                  type: "GET",
+                  dataType: "json",
+                  url: '/users/changeStatus',
+                  data: {'status': status, 'user_id': user_id},
+                  success: function(data){
+                      console.log(data.success)
+                  }
+              });
+          })
+      })
+  </script>
+@endpush

@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
   Route::resource('roles', \App\Http\Controllers\RoleController::class);
   Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
+  Route::get('/users/changeStatus', [\App\Http\Controllers\UserController::class, 'changeStatus']);
   Route::resource('users', \App\Http\Controllers\UserController::class);
   Route::get('academic-year', fn () => 'academic_year')->name('academic.index');
   Route::get('divisions', fn () => 'divisions')->name('divisions.index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -20,7 +21,7 @@ class UserController extends Controller
 
   public function index(): View
   {
-    $users = User::query()->where('id', '!=' , 1)->latest()->paginate(15);
+    $users = User::query()->paginate(15);
 
     return view('users.index', compact('users'));
   }
@@ -32,9 +33,14 @@ class UserController extends Controller
     return view('users.create', compact('roles'));
   }
 
-  public function store(Request $request)
+  public function store(Request $request): RedirectResponse
   {
-    $data             = $request->all();
+    $data             = $request->validate([
+      'name' => 'required|string',
+      'email' => 'required|email|unique:users',
+      'password' => 'required|string|confirmed',
+      'status' => 'boolean'
+    ]);
     $data['password'] = Hash::make($request->password);
 
     $user = User::create($data);
@@ -62,7 +68,7 @@ class UserController extends Controller
     return view('users.edit', compact('user', 'roles', 'userRoles'));
   }
 
-  public function update(Request $request, User $user)
+  public function update(Request $request, User $user): RedirectResponse
   {
     $data = $request->all();
 
@@ -79,7 +85,7 @@ class UserController extends Controller
     return redirect()->route('users.index');
   }
 
-  public function destroy(User $user)
+  public function destroy(User $user): RedirectResponse
   {
     // About if user is Super Admin or User ID belongs to Auth User
     if ($user->hasRole('Super Admin') || $user->id == auth()->id()) {
@@ -90,5 +96,13 @@ class UserController extends Controller
     $user->delete();
 
     return redirect()->route('users.index');
+  }
+
+  public function changeStatus(Request $request)
+  {
+    $user         = User::find($request->user_id);
+    $user->status = $request->status;
+    $user->save();
+
   }
 }
