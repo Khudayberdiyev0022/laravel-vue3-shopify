@@ -34,6 +34,20 @@
   .pagination {
     margin-bottom: 0;
   }
+  .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+  .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background: #41474d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  }
+  [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview {
+    padding-left: 15px;
+  }
+  [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active,
+  [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active:focus,
+  [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active:hover {
+    background: #41474d;
+    color: #fff;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -213,8 +227,9 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
-    {{ $slot ?? ''}}
-    @yield('content')
+      {{ $slot ?? ''}}
+      @yield('content')
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

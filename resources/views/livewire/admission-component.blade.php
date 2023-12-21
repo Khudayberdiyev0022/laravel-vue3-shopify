@@ -1,4 +1,4 @@
-<section class="content" >
+<section class="content">
   <div class="container-fluid">
     {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
     <!-- Small boxes (Stat box) -->
@@ -163,7 +163,6 @@
       <button class="btn btn-sm btn-danger" wire:click="deleteConfirm()">Yes! Delete</button>
     </x-slot>
   </x-modal>
-
 
 </section>
 

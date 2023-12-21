@@ -35,421 +35,144 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-header">Asosiy</li>
+        <li class="nav-header">Administrator</li>
         @canany(['role-create', 'role-edit', 'role-delete'])
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('roles.index') }}">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles.*') }}">
+              <i class="nav-icon fas fa-user-shield"></i>
               Rollar
             </a>
           </li>
         @endcanany
+        <li class="nav-item">
+          <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions.*') }}">
+            <i class="nav-icon fas fa-user-check"></i>
+            <p>
+              <span>Huquqlar</span>
+            </p>
+          </a>
+        </li>
         @canany(['user-create', 'user-edit', 'user-delete'])
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('users.index') }}">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
+              <i class="nav-icon fas fa-users"></i>
               Foydalanuvchilar
             </a>
           </li>
         @endcanany
+        <li class="nav-header">Universitet</li>
         @canany(['admission-create', 'admission-edit', 'admission-delete'])
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admissions') }}">
-              <i class="nav-icon fas fa-th"></i>
-              Qabul yili
+            <a  href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions.*') }}">
+              <i class="nav-icon fas fa-calendar-alt"></i>
+              O'quv yili
             </a>
           </li>
         @endcanany
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('divisions.index') }}" class="nav-link {{ activeLink('divisions.*') }}">
+            <i class="nav-icon fas fa-school"></i>
             <p>
-              <span>Foydalanuvchilar</span>
+              <span>Kafedra</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('sciences.index') }}" class="nav-link {{ activeLink('sciences.*') }}">
+            <i class="nav-icon fas fa-book-open"></i>
             <p>
-              <span>Semester</span>
+              <span>Fanlar</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Potoklar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Qayta o'qish</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>ON qayta topshirish</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dars jadvali
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Qo'shish</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ro'yhat</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Kredit qo'shish</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Yakuniy
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Qo'shish</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ro'yhat</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Qaydnoma</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Talabalarni ko'chirish</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Talaba hujjatlari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>FAQ</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Video qo'llanma</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>So'rovnoma</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Fan sozlamasi</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-header">Lug'atlar</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Mamlakatlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Binolar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Qarindoshlik aloqasi</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Shtat yuklamasi</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Davomatni boshqarish (kategoriyalar)</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Millatlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Hujjatlar turlari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Tashkilotlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Dam olish kunlari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Tiket kategoriyalari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Jihoz kategoriyalari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-header">Magistr</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Talabalar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('class_schedule.index') }}" class="nav-link {{ activeLink('class_schedule.*') }}">
+            <i class="nav-icon fas fa-clipboard-list"></i>
             <p>
               <span>Dars jadvali</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Yo'nalishlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-header">Tuzilma</li>
-        <li class="nav-item">
-          <a href="{{ route('departments') }}"  class="nav-link {{ activeLink('departments') }}">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Bo'limlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Fakultetlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('professors.index') }}" class="nav-link {{ activeLink('professors.*') }}">
+            <i class="nav-icon fas fa-user-tie"></i>
             <p>
               <span>Professor-o'qituvchilar</span>
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Talabalar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Lavozimlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Yo'nalishlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Yangiliklar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Fanlar</span>
-            </p>
-          </a>
-        </li>
+        <li class="nav-header">Talabalar</li>
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
+          <a href="javascript:void(false)" class="nav-link ">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              O'quv rejalari
+              Talabalar
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Qo'shish</p>
+              <a href="{{ route('bachelors.index') }}" class="nav-link {{ activeLink('bachelors.*') }}">
+                <i class="nav-icon fas fa-graduation-cap"></i>
+                <p>Bakalavr</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ro'yhat</p>
+              <a href="{{ route('masters.index') }}" class="nav-link {{ activeLink('masters.*') }}">
+                <i class="nav-icon fas fa-user-graduate"></i>
+                <p>Magistr</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('training.index') }}" class="nav-link {{ activeLink('training.*') }}">
+                <i class="nav-icon fas fa-university"></i>
+                <p>Malaka oshirish</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="javascript:void(false)" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Imtixon
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('intermediate.index') }}" class="nav-link {{ activeLink('intermediate.*') }}">
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>Oraliq nazorat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('test.index') }}" class="nav-link {{ activeLink('test.*') }}">
+                <i class="nav-icon fas fa-feather-alt"></i>
+                <p>Test</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('speaking.index') }}" class="nav-link {{ activeLink('speaking.*') }}">
+                <i class="nav-icon fas fa-volume-up"></i>
+                <p>Og'zaki</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('sync.index') }}" class="nav-link {{ activeLink('sync.*') }}">
+            <i class="nav-icon fas fa-sync-alt"></i>
             <p>
-              <span>Fan bloklari</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-header">Tizim administratori</li>
-        <li class="nav-item">
-          <a href="{{ route('roles.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Rollar</span>
+              <span>Sinxron darslar</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('permissions.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <a href="{{ route('files.index') }}" class="nav-link {{ activeLink('files.*') }}">
+            <i class="nav-icon fas fa-folder-open"></i>
             <p>
-              <span>Huquqlar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Foydalanuvchilar</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              <span>Jarayonlar tarixi</span>
+              <span>Fayllar boshqaruvi</span>
             </p>
           </a>
         </li>
