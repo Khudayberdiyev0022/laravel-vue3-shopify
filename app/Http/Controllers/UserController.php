@@ -12,16 +12,15 @@ class UserController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth');
-    $this->middleware('permission:user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
-    $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
-    $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
-    $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    $this->middleware('permission:user.create')->only('create', 'store');
+    $this->middleware('permission:user.show')->only('index', 'show');
+    $this->middleware('permission:user.edit')->only('edit', 'update');
+    $this->middleware('permission:user.destroy')->only('destroy');
   }
 
   public function index(): View
   {
-    $users = User::query()->where('id', '!=' , 1)->latest()->paginate(3);
+    $users = User::query()->where('id', '!=' , 1)->latest()->paginate(15);
 
     return view('users.index', compact('users'));
   }

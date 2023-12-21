@@ -35,6 +35,13 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+        <li class="nav-header">Asosiy</li>
+        <li class="nav-item">
+          <a href="{{ route('index') }}" class="nav-link {{ activeLink('index') }}">
+            <i class="nav-icon fas fa-home"></i>
+            Bosh sahifa
+          </a>
+        </li>
         <li class="nav-header">Administrator</li>
         <li class="nav-item">
           <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles.*') }}">
@@ -42,6 +49,7 @@
             Rollar
           </a>
         </li>
+        @can('permissions.read')
         <li class="nav-item">
           <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions.*') }}">
             <i class="nav-icon fas fa-user-check"></i>
@@ -50,6 +58,7 @@
             </p>
           </a>
         </li>
+        @endcan
         <li class="nav-item">
           <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
             <i class="nav-icon fas fa-users"></i>

@@ -9,14 +9,15 @@
               <form action="{{ route('roles.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                  <label for="name">Role Name</label>
+                  <label for="name" class="font-weight-normal">Role Name</label>
                   <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="User, Editor, Author ... ">
                   @error('name')
                   <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
-
                 <table class="table table-bordered permissionTable">
+                <thead>
+               <tr>
                  <th>
                    {{__('Section')}}
                  </th>
@@ -30,6 +31,8 @@
                  <th>
                    {{__("Available permissions")}}
                  </th>
+               </tr>
+                </thead>
 
                   <tbody>
                   @foreach($permissions as $key => $group)
@@ -38,16 +41,16 @@
                         <b>{{ ucfirst($key) }}</b>
                       </td>
                       <td class="p-6" width="50%">
-                        <label>
+                        <label class="font-weight-normal">
                           <input class="selectall" type="checkbox">
                           {{__('Select All') }}
                         </label>
                       </td>
                       <td class="p-6">
                         @foreach($group as $permission)
-                          <label style="width: 50%">
-                            <input type="checkbox" name="permissions[]" class="permissioncheckbox rounded-md border" value="{{ $permission->name }}">
-                            {{$permission->name}}
+                          <label class="font-weight-normal" style="width: 50%">
+                            <input type="checkbox" name="permissions[]" class="permissioncheckbox"   value="{{ $permission->name }}">
+                            {{ \Illuminate\Support\Str::replace('.', ' ', ucfirst($permission->name)) }}
                           </label>
                         @endforeach
                       </td>
@@ -70,17 +73,12 @@
 @push('script')
   <script>
       $(".permissionTable").on('click', '.selectall', function () {
-
           if ($(this).is(':checked')) {
               $(this).closest('tr').find('[type=checkbox]').prop('checked', true);
-
           } else {
               $(this).closest('tr').find('[type=checkbox]').prop('checked', false);
-
           }
-
           calcu_allchkbox();
-
       });
 
       $(".permissionTable").on('click', '.grand_selectall', function () {
@@ -94,18 +92,13 @@
       });
 
       $(function () {
-
           calcu_allchkbox();
           selectall();
-
       });
 
-      function selectall(){
-
+      function selectall() {
           $('.selectall').each(function (i) {
-
               var allchecked = new Array();
-
               $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
                   if ($(this).is(":checked")) {
                       allchecked.push(1);
@@ -113,23 +106,17 @@
                       allchecked.push(0);
                   }
               });
-
               if ($.inArray(0, allchecked) != -1) {
                   $(this).prop('checked', false);
               } else {
                   $(this).prop('checked', true);
               }
-
           });
       }
 
-      function calcu_allchkbox(){
-
+      function calcu_allchkbox() {
           var allchecked = new Array();
-
           $('.selectall').each(function (i) {
-
-
               $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
                   if ($(this).is(":checked")) {
                       allchecked.push(1);
@@ -137,10 +124,7 @@
                       allchecked.push(0);
                   }
               });
-
-
           });
-
           if ($.inArray(0, allchecked) != -1) {
               $('.grand_selectall').prop('checked', false);
           } else {
@@ -149,12 +133,8 @@
 
       }
 
-
-
       $('.permissionTable').on('click', '.permissioncheckbox', function () {
-
           var allchecked = new Array;
-
           $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
               if ($(this).is(":checked")) {
                   allchecked.push(1);
@@ -167,7 +147,6 @@
               $(this).closest('tr').find('.selectall').prop('checked', false);
           } else {
               $(this).closest('tr').find('.selectall').prop('checked', true);
-
           }
 
           calcu_allchkbox();

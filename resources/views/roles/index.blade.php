@@ -5,7 +5,12 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4>Role List</h4>
+           <div class="d-flex justify-content-between">
+             <h4>Role List</h4>
+             <div>
+               <a href="{{ route('roles.create') }}" class="btn btn-success">Create</a>
+             </div>
+           </div>
           </div>
           <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -18,32 +23,49 @@
               </tr>
               </thead>
               <tbody>
-                @foreach($roles as $role)
-                  <tr>
-                    <td>{{ $role->id }}</td>
-                    <td>{{ $role->name }}</td>
-                    <td>
-                      @foreach($role->permissions as $permission)
-                      <span>{{ $permission->name }}</span>
-                      @endforeach
-                    </td>
-                    <td>
-                      @if ($role->name!='Super Admin')
-                        @can('edit-role')
-                          <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                        @endcan
+{{--              <button class="btn btn-light">--}}
+{{--                admission--}}
+{{--                <i class="fas fa-plus text-success mr-1"></i>--}}
+{{--                <i class="fas fa-eye text-primary mr-1"></i>--}}
+{{--                <i class="fas fa-pencil-alt text-info mr-1"></i>--}}
+{{--                <i class="fas fa-trash text-danger mr-1"></i>--}}
+{{--              </button>--}}
 
-                        @can('delete-role')
-                          @if ($role->name!=Auth::user()->hasRole($role->name))
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this role?');"><i class="bi bi-trash"></i> Delete</button>
-                          @endif
-                        @endcan
-                      @endif
-                    </td>
-                  </tr>
-                @endforeach
+              @foreach($roles as $role)
+                <tr>
+                  <td>{{ $role->id }}</td>
+                  <td>{{ $role->name }}</td>
+                  <td>
+                    @foreach($role->permissions as $permission)
+{{--                      @json(\Illuminate\Support\Str::replace('.', ' ', $permission->name))--}}
+                      <span class="badge badge-info p-2">{{ $permission->name }}</span>
+                    @endforeach
+                  </td>
+                  <td class="d-flex">
+                    @if ($role->name!='Super Admin')
+
+{{--                      @can('role.edit')--}}
+                        <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info btn-sm mr-2"><i class="fas fa-pencil-alt"></i></a>
+{{--                      @endcan--}}
+
+{{--                      @can('role.destroy')--}}
+{{--                        @if ($role->name!=Auth::user()->hasRole($role->name))--}}
+                      <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this role?');"><i class="fas fa-trash-alt"></i></button>
+                      </form>
+{{--                        @endif--}}
+{{--                      @endcan--}}
+                    @endif
+                  </td>
+                </tr>
+              @endforeach
               </tbody>
             </table>
+          </div>
+          <div class="card-footer">
+            {{ $roles->onEachSide(0)->links() }}
           </div>
         </div>
       </div>

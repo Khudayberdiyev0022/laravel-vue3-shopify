@@ -3,20 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+public function __construct()
+{
+  $this->middleware('permission:role.create')->only('create', 'store');
+  $this->middleware('permission:role.show')->only('index', 'show');
+  $this->middleware('permission:role.edit')->only('edit', 'update');
+  $this->middleware('permission:role.destroy')->only('destroy');
+}
 
   public function index()
   {
-    $roles = Role::query()->get();
+    $roles = Role::with('permissions')->paginate(15);
 
+//    dd($roles);
     return view('roles.index', compact('roles'));
   }
 
-  public function create()
+  public function create(): View
   {
     $role_permission = Permission::query()->select('name', 'id')->groupBy('name')->get();
     $permissions     = [];

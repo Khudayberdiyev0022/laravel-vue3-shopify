@@ -48,6 +48,9 @@
     background: #41474d;
     color: #fff;
   }
+  /*label:not(.form-check-label):not(.custom-file-label) {*/
+  /*  font-weight: 500;*/
+  /*}*/
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
