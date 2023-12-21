@@ -1,60 +1,178 @@
 @extends('layouts.app')
-
 @section('content')
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <form action="{{ route('roles.update', $role->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                  <label for="name">Role Name</label>
+                  <input type="text" name="name" value="{{ old('name',$role->name ?? '') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="User, Editor, Author ... ">
+                  @error('name')
+                  <span class="invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-8">
+                <table class="table table-bordered permissionTable">
+                 <th>
+                   {{__('Section')}}
+                 </th>
+                 <th>
+                   <label class="mb-0">
+                     <input class="grand_selectall" type="checkbox">
+                     {{__('Select All') }}
+                   </label>
+                 </th>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="float-start">
-            Edit Role
+                 <th>
+                   {{__("Available permissions")}}
+                 </th>
+
+                  <tbody>
+                  @foreach($permissions as $key => $group)
+                    <tr class="py-8">
+                      <td class="p-6">
+                        <b>{{ ucfirst($key) }}</b>
+                      </td>
+                      <td class="p-6" width="50%">
+                        <label>
+                          <input class="selectall" type="checkbox">
+                          {{__('Select All') }}
+                        </label>
+                      </td>
+                      <td class="p-6">
+                        @foreach($group as $permission)
+                          <label style="width: 30%" class="">
+                            <input type="checkbox" {{ $role->permissions->contains('id',$permission->id) ? "checked" : "" }} name="permissions[]" class="permissioncheckbox"  value="{{ $permission->name }}">
+                            {{$permission->name}}
+                          </label>
+                        @endforeach
+                      </td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary ">
+                  Update Role
+                </button>
+              </form>
+            </div>
           </div>
-          <div class="float-end">
-            <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
-          </div>
-        </div>
-        <div class="card-body">
-          <form action="{{ route('roles.update', $role->id) }}" method="post">
-            @csrf
-            @method("PUT")
-
-            <div class="mb-3 row">
-              <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
-              <div class="col-md-6">
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $role->name }}">
-                @if ($errors->has('name'))
-                  <span class="text-danger">{{ $errors->first('name') }}</span>
-                @endif
-              </div>
-            </div>
-
-            <div class="mb-3 row">
-              <label for="permissions" class="col-md-4 col-form-label text-md-end text-start">Permissions</label>
-              <div class="col-md-6">
-                <select class="form-select @error('permissions') is-invalid @enderror" multiple aria-label="Permissions" id="permissions" name="permissions[]" style="height: 210px;">
-                  @forelse ($permissions as $permission)
-                    <option value="{{ $permission->id }}" {{ in_array($permission->id, $rolePermissions ?? []) ? 'selected' : '' }}>
-                      {{ $permission->name }}
-                    </option>
-                  @empty
-
-                  @endforelse
-                </select>
-                @if ($errors->has('permissions'))
-                  <span class="text-danger">{{ $errors->first('permissions') }}</span>
-                @endif
-              </div>
-            </div>
-
-            <div class="mb-3 row">
-              <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update Role">
-            </div>
-
-          </form>
         </div>
       </div>
     </div>
-  </div>
-
+  </section>
 @endsection
+
+@push('script')
+  <script>
+      $(".permissionTable").on('click', '.selectall', function () {
+
+          if ($(this).is(':checked')) {
+              $(this).closest('tr').find('[type=checkbox]').prop('checked', true);
+
+          } else {
+              $(this).closest('tr').find('[type=checkbox]').prop('checked', false);
+
+          }
+
+          calcu_allchkbox();
+
+      });
+
+      $(".permissionTable").on('click', '.grand_selectall', function () {
+          if ($(this).is(':checked')) {
+              $('.selectall').prop('checked', true);
+              $('.permissioncheckbox').prop('checked', true);
+          } else {
+              $('.selectall').prop('checked', false);
+              $('.permissioncheckbox').prop('checked', false);
+          }
+      });
+
+      $(function () {
+
+          calcu_allchkbox();
+          selectall();
+
+      });
+
+      function selectall(){
+
+          $('.selectall').each(function (i) {
+
+              var allchecked = new Array();
+
+              $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
+                  if ($(this).is(":checked")) {
+                      allchecked.push(1);
+                  } else {
+                      allchecked.push(0);
+                  }
+              });
+
+              if ($.inArray(0, allchecked) != -1) {
+                  $(this).prop('checked', false);
+              } else {
+                  $(this).prop('checked', true);
+              }
+
+          });
+      }
+
+      function calcu_allchkbox(){
+
+          var allchecked = new Array();
+
+          $('.selectall').each(function (i) {
+
+
+              $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
+                  if ($(this).is(":checked")) {
+                      allchecked.push(1);
+                  } else {
+                      allchecked.push(0);
+                  }
+              });
+
+
+          });
+
+          if ($.inArray(0, allchecked) != -1) {
+              $('.grand_selectall').prop('checked', false);
+          } else {
+              $('.grand_selectall').prop('checked', true);
+          }
+
+      }
+
+
+
+      $('.permissionTable').on('click', '.permissioncheckbox', function () {
+
+          var allchecked = new Array;
+
+          $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
+              if ($(this).is(":checked")) {
+                  allchecked.push(1);
+              } else {
+                  allchecked.push(0);
+              }
+          });
+
+          if ($.inArray(0, allchecked) != -1) {
+              $(this).closest('tr').find('.selectall').prop('checked', false);
+          } else {
+              $(this).closest('tr').find('.selectall').prop('checked', true);
+
+          }
+
+          calcu_allchkbox();
+
+      });
+  </script>
+@endpush

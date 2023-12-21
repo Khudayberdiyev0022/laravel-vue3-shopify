@@ -36,14 +36,12 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-header">Administrator</li>
-        @canany(['role-create', 'role-edit', 'role-delete'])
-          <li class="nav-item">
-            <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles.*') }}">
-              <i class="nav-icon fas fa-user-shield"></i>
-              Rollar
-            </a>
-          </li>
-        @endcanany
+        <li class="nav-item">
+          <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles.*') }}">
+            <i class="nav-icon fas fa-user-shield"></i>
+            Rollar
+          </a>
+        </li>
         <li class="nav-item">
           <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions.*') }}">
             <i class="nav-icon fas fa-user-check"></i>
@@ -52,23 +50,19 @@
             </p>
           </a>
         </li>
-        @canany(['user-create', 'user-edit', 'user-delete'])
-          <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
-              <i class="nav-icon fas fa-users"></i>
-              Foydalanuvchilar
-            </a>
-          </li>
-        @endcanany
+        <li class="nav-item">
+          <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
+            <i class="nav-icon fas fa-users"></i>
+            Foydalanuvchilar
+          </a>
+        </li>
         <li class="nav-header">Universitet</li>
-        @canany(['admission-create', 'admission-edit', 'admission-delete'])
-          <li class="nav-item">
-            <a  href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions.*') }}">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              O'quv yili
-            </a>
-          </li>
-        @endcanany
+        <li class="nav-item">
+          <a href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions.*') }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            O'quv yili
+          </a>
+        </li>
         <li class="nav-item">
           <a href="{{ route('divisions.index') }}" class="nav-link {{ activeLink('divisions.*') }}">
             <i class="nav-icon fas fa-school"></i>

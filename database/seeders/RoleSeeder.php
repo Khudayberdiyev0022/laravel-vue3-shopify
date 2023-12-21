@@ -17,23 +17,23 @@ class RoleSeeder extends Seeder
     $admin = Role::create(['name' => 'Admin']);
     $teacher = Role::create(['name' => 'Teacher']);
     $student = Role::create(['name' => 'Student']);
-
-    $admin->givePermissionTo([
-      'admissions-create',
-      'admissions-show',
-      'admissions-edit',
-      'admissions-destroy',
-      'departments-create',
-      'departments-show',
-      'departments-edit',
-      'departments-destroy'
-    ]);
-
-    $teacher->givePermissionTo([
-      'departments-create',
-      'departments-show',
-      'departments-edit',
-      'departments-destroy'
-    ]);
+//
+//    $admin->givePermissionTo([
+//      'admissions.create',
+//      'admissions.show',
+//      'admissions.edit',
+//      'admissions.destroy',
+//      'departments.create',
+//      'departments.show',
+//      'departments.edit',
+//      'departments.destroy'
+//    ]);
+//
+//    $teacher->givePermissionTo([
+//      'departments.create',
+//      'departments.show',
+//      'departments.edit',
+//      'departments.destroy'
+//    ]);
   }
 }

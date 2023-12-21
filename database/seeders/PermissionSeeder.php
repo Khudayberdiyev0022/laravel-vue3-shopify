@@ -14,14 +14,14 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
       $permissions = [
-        'admissions-create',
-        'admissions-show',
-        'admissions-edit',
-        'admissions-destroy',
-        'departments-create',
-        'departments-show',
-        'departments-edit',
-        'departments-destroy'
+        'admissions.create',
+        'admissions.show',
+        'admissions.edit',
+        'admissions.destroy',
+        'departments.create',
+        'departments.show',
+        'departments.edit',
+        'departments.destroy'
       ];
 
       foreach ($permissions as $permission) {
