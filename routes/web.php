@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
   Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
   Route::get('/users/changeStatus', [\App\Http\Controllers\UserController::class, 'changeStatus']);
   Route::resource('users', \App\Http\Controllers\UserController::class);
+  Route::resource('chairs',\App\Http\Controllers\ChairController::class);
   Route::get('academic-year', fn() => 'academic_year')->name('academic.index');
   Route::get('divisions', fn() => 'divisions')->name('divisions.index');
   Route::get('sciences', fn() => 'sciences')->name('sciences.index');

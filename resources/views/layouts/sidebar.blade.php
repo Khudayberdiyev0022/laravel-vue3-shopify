@@ -73,7 +73,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('divisions.index') }}" class="nav-link {{ activeLink('divisions.*') }}">
+          <a href="{{ route('chairs.index') }}" class="nav-link {{ activeLink('chairs.*') }}">
             <i class="nav-icon fas fa-school"></i>
             <p>
               <span>Kafedra</span>
