@@ -18,14 +18,19 @@ class AdmissionComponent extends Component
   /**
    * @throws AuthorizationException
    */
-  public function mount(): void
-  {
-    $this->authorize('auth');
-    $this->authorize('permission:admission-create|admission-edit|admission-delete', ['only' => ['index','show']]);
-    $this->authorize('permission:admission-create', ['only' => ['create','store']]);
-    $this->authorize('permission:admission-edit', ['only' => ['edit','update']]);
-    $this->authorize('permission:admission-delete', ['only' => ['destroy']]);
-  }
+////  public function mount(): void
+////  {
+////    $this->authorize('auth');
+////    $this->authorize('permission:admission.create|admission.edit|admission.delete', ['only' => ['index','show']]);
+////    $this->authorize('permission:admission.create', ['only' => ['create','store']]);
+////    $this->authorize('permission:admission.edit', ['only' => ['edit','update']]);
+////    $this->authorize('permission:admission.delete', ['only' => ['destroy']]);
+////    $this->middleware('permission:admission.create');
+////    $this->authorize('permission:admission.create');
+////    $this->authorize('permission:admission.show');
+////    $this->authorize('permission:admission.edit');
+////    $this->authorize('permission:admission.destroy');
+////  }
 
   #[Validate([
     'year'       => 'required|digits:4|integer|min:2020|max:2030',

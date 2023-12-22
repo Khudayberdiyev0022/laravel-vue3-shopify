@@ -7,3 +7,10 @@ if (!function_exists('activeLink')) {
     return request()->routeIs($name) ? $class : '';
   }
 }
+
+//if (!function_exists('changeStatus')) {
+//  function changeStatus($model,)
+//  {
+//
+//  }
+//}

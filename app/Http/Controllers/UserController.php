@@ -36,10 +36,10 @@ class UserController extends Controller
   public function store(Request $request): RedirectResponse
   {
     $data             = $request->validate([
-      'name' => 'required|string',
-      'email' => 'required|email|unique:users',
+      'name'     => 'required|string',
+      'email'    => 'required|email|unique:users',
       'password' => 'required|string|confirmed',
-      'status' => 'boolean'
+      'status'   => 'boolean',
     ]);
     $data['password'] = Hash::make($request->password);
 
@@ -103,6 +103,5 @@ class UserController extends Controller
     $user         = User::find($request->user_id);
     $user->status = $request->status;
     $user->save();
-
   }
 }
