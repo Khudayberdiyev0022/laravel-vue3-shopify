@@ -37,6 +37,13 @@ class AdmissionComponent extends Component
     'start_date' => 'required|date',
     'end_date'   => 'required|date',
   ])]
+  public function render(): View
+  {
+    $admissions = Admission::query()->latest()->paginate(15);
+
+    return view('livewire.admission-component', compact('admissions'));
+  }
+
   public function create(): void
   {
     $admission = new Admission();
@@ -105,10 +112,4 @@ class AdmissionComponent extends Component
     $this->dispatch('close-modal');
   }
 
-  public function render(): View
-  {
-    $admissions = Admission::query()->latest()->paginate(15);
-
-    return view('livewire.admission-component', compact('admissions'));
-  }
 }
