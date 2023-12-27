@@ -1,66 +1,59 @@
-<section class="content">
-  <div class="container-fluid">
-    {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-12">
-        @include('components.alert')
-        <div class="card">
-{{--          <div wire:loading class="vh-100 position-relative opacity-75">--}}
-{{--            <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">--}}
-{{--              Loading...--}}
-{{--            </p>--}}
-{{--          </div>--}}
-          <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-              <h3 class="card-title">Admissions</h3>
-              <button wire:click="create" wire:keydown.escape="close" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table class="table table-bordered">
-              <thead>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Yil</th>
-                <th>Yaratilgan vaqti</th>
-                <th>Tugash vaqti</th>
-                <th style="width: 40px">Amallar</th>
-              </tr>
-              </thead>
-              <tbody>
-              @foreach($admissions as $admission)
-                <tr>
-                  <td>{{ ($admissions->currentPage()-1) * $admissions ->perpage() + $loop->index +1 }}.</td>
-                  <td>{{ $admission->year }}</td>
-                  <td>{{ $admission->start_date }}</td>
-                  <td>{{ $admission->end_date }}</td>
-                  <td>
-                    <div class="d-flex">
-                      <button wire:click="show({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
-                      <button wire:click="edit({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
-                      <button wire:click="delete({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              @endforeach
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            <div class="float-right pagination-sm">
-              {{ $admissions->links() }}
-            </div>
-          </div>
-        </div>
+<section>
+  {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
+
+  <div class="card">
+    {{--          <div wire:loading class="vh-100 position-relative opacity-75">--}}
+    {{--            <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">--}}
+    {{--              Loading...--}}
+    {{--            </p>--}}
+    {{--          </div>--}}
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="card-title">Admissions</h3>
+        <button wire:click="create" wire:keydown.escape="close" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
       </div>
     </div>
-    <!-- /.row -->
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th style="width: 10px">#</th>
+          <th>Yil</th>
+          <th>Yaratilgan vaqti</th>
+          <th>Tugash vaqti</th>
+          <th style="width: 40px">Amallar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($admissions as $admission)
+          <tr>
+            <td>{{ ($admissions->currentPage()-1) * $admissions ->perpage() + $loop->index +1 }}.</td>
+            <td>{{ $admission->year }}</td>
+            <td>{{ $admission->start_date }}</td>
+            <td>{{ $admission->end_date }}</td>
+            <td>
+              <div class="d-flex">
+                <button wire:click="show({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                <button wire:click="edit({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
+                <button wire:click="delete({{ $admission->id }})" wire:keydown.escape="close" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+    @if($admissions->hasPages())
+      <div class="card-footer">
+        <div class="float-right pagination-sm">
+          {{ $admissions->links() }}
+        </div>
+      </div>
+    @endif
   </div>
 
-  <x-modal id="create" >
+  <x-modal id="create">
     <x-slot name="title">Добавить</x-slot>
     <x-slot name="body">
       <form wire:submit="store">
@@ -94,9 +87,9 @@
     </x-slot>
   </x-modal>
 
-  <x-modal id="show" >
+  <x-modal id="show">
     <x-slot name="title">Admission Information</x-slot>
-    <x-slot name="body" >
+    <x-slot name="body">
       <table class="table table-bordered">
         <tbody>
         <tr>

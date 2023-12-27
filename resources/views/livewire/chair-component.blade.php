@@ -1,54 +1,49 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        @include('components.alert')
-        <div class="card">
-          <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-              <h3 class="card-title">Kafedra</h3>
-              <button wire:click="create" wire:keydown.escape="close" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
-            </div>
-          </div>
-          <div class="card-body">
-            <table class="table table-bordered">
-              <thead>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Nomi</th>
-                <th>Yaratilgan vaqti</th>
-                <th style="width: 40px">Amallar</th>
-              </tr>
-              </thead>
-              <tbody>
-              @foreach($chairs as $chair)
-                <tr>
-                  <td>{{ ($chairs->currentPage()-1) * $chairs ->perpage() + $loop->index +1 }}.</td>
-                  <td>{{ $chair->name }}</td>
-                  <td>{{ $chair->created_at }}</td>
-                  <td>
-                    <div class="d-flex">
-                      <button wire:click="show({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
-                      <button wire:click="edit({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
-                      <button wire:click="delete({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              @endforeach
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer">
-            <div class="float-right pagination-sm">
-              {{ $chairs->links() }}
-            </div>
-          </div>
-        </div>
+<section>
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="card-title">Kafedra</h3>
+        <button wire:click="create" wire:keydown.escape="close" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
       </div>
     </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th style="width: 10px">#</th>
+          <th>Nomi</th>
+          <th>Yaratilgan vaqti</th>
+          <th style="width: 40px">Amallar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($chairs as $chair)
+          <tr>
+            <td>{{ ($chairs->currentPage()-1) * $chairs ->perpage() + $loop->index +1 }}.</td>
+            <td>{{ $chair->name }}</td>
+            <td>{{ $chair->created_at }}</td>
+            <td>
+              <div class="d-flex">
+                <button wire:click="show({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                <button wire:click="edit({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
+                <button wire:click="delete({{ $chair->id }})" wire:keydown.escape="close" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+    @if($chairs->hasPages())
+      <div class="card-footer">
+        <div class="float-right pagination-sm">
+          {{ $chairs->links() }}
+        </div>
+      </div>
+    @endif
   </div>
 
-  <x-modal id="create" >
+  <x-modal id="create">
     <x-slot name="title">Добавить</x-slot>
     <x-slot name="body">
       <form wire:submit="store">
@@ -66,9 +61,9 @@
     </x-slot>
   </x-modal>
 
-  <x-modal id="show" >
+  <x-modal id="show">
     <x-slot name="title">Chair Information</x-slot>
-    <x-slot name="body" >
+    <x-slot name="body">
       <table class="table table-bordered">
         <tbody>
         <tr>
@@ -110,4 +105,4 @@
     </x-slot>
   </x-modal>
 
-</div>
+</section>

@@ -15,9 +15,6 @@ class AdmissionComponent extends Component
 
   public string $year, $start_date, $end_date, $admission_id;
 
-  /**
-   * @throws AuthorizationException
-   */
 ////  public function mount(): void
 ////  {
 ////    $this->authorize('auth');

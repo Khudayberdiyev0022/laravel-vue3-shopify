@@ -1,64 +1,53 @@
-<section class="content">
-  <div class="container-fluid">
-
-    {{--    <div wire:loading.delay.longest class="bg-red">...</div>  <!-- 1000ms -->--}}
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-12">
-        @include('components.alert')
-        <div class="card">
-          <div wire:loading class="vh-100 position-relative opacity-25">
-            <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">
-              Loading...
-            </p>
-          </div>
-          <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-              <h3 class="card-title">Departments</h3>
-              <button wire:click="create" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table class="table table-bordered">
-              <thead>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Title</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th style="width: 40px">Amallar</th>
-              </tr>
-              </thead>
-              <tbody>
-              @foreach($departments as $department)
-                <tr>
-                  <td>{{ ($departments->currentPage()-1) * $departments ->perpage() + $loop->index +1 }}.</td>
-                  <td>{{ $department->getTitle() }}</td>
-                  <td>{{ $department->phone }}</td>
-                  <td>{{ $department->email }}</td>
-                  <td>
-                    <div class="d-flex">
-                      <button wire:click="show({{ $department->id }})" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
-                      <button wire:click="edit({{ $department->id }})" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
-                      <button wire:click="delete({{ $department->id }})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              @endforeach
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            <div class="float-right pagination-sm">
-              {{ $departments->links() }}
-            </div>
-          </div>
-        </div>
+<section>
+  <div class="card">
+    <div wire:loading class="vh-100 position-relative opacity-25">
+      <p style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%)">
+        Loading...
+      </p>
+    </div>
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="card-title">Departments</h3>
+        <button wire:click="create" class="btn btn-success"><i class="fas fa-plus"></i> Qo'shish</button>
       </div>
     </div>
-    <!-- /.row -->
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th style="width: 10px">#</th>
+          <th>Title</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th style="width: 40px">Amallar</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($departments as $department)
+          <tr>
+            <td>{{ ($departments->currentPage()-1) * $departments ->perpage() + $loop->index +1 }}.</td>
+            <td>{{ $department->getTitle() }}</td>
+            <td>{{ $department->phone }}</td>
+            <td>{{ $department->email }}</td>
+            <td>
+              <div class="d-flex">
+                <button wire:click="show({{ $department->id }})" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></button>
+                <button wire:click="edit({{ $department->id }})" class="btn btn-sm btn-primary mx-2"><i class="fas fa-pencil-alt"></i></button>
+                <button wire:click="delete({{ $department->id }})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <div class="float-right pagination-sm">
+        {{ $departments->links() }}
+      </div>
+    </div>
   </div>
 
   <x-modal id="create">
@@ -253,7 +242,5 @@
       <button class="btn btn-sm btn-danger" wire:click="deleteConfirm()">Yes! Delete</button>
     </x-slot>
   </x-modal>
-
-
 </section>
 
