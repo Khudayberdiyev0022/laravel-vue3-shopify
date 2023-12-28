@@ -6,10 +6,14 @@ use App\Models\Teacher;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class TeacherComponent extends Component
 {
-  public string $name, $surname, $middlename, $date_of_birth, $phone, $passport, $teacher_id;
+  use WithFileUploads;
+
+  public string $teacher_id, $name, $surname, $middlename, $date_of_birth, $phone, $passport;
+  public $image;
 
   #[Validate([
     'name'          => 'required|string',
@@ -18,6 +22,7 @@ class TeacherComponent extends Component
     'date_of_birth' => 'required|date',
     'phone'         => 'nullable|string',
     'passport'      => 'nullable|string',
+    'image'         => 'nullable|image|mimes:png,jpeg,jpg',
   ])]
   public function render(): View
   {
@@ -30,12 +35,15 @@ class TeacherComponent extends Component
   {
     $teacher = new Teacher();
 
-    $this->dispatch('show-create');
+    $this->dispatch('show-create', compact('teacher'));
   }
 
   public function store(): void
   {
-    $data = $this->validate();
+    $data          = $this->validate();
+    $path          = $this->image->store('teachers', 'public');
+    $data['image'] = 'storage/'.$path;
+
     Teacher::query()->firstOrCreate($data);
     session()->flash('success', 'New teacher has been added successfully');
     $this->close();
@@ -43,6 +51,7 @@ class TeacherComponent extends Component
 
   public function show(Teacher $teacher): void
   {
+    $this->image         = $teacher->image;
     $this->name          = $teacher->name;
     $this->surname       = $teacher->surname;
     $this->middlename    = $teacher->middlename;
@@ -55,6 +64,7 @@ class TeacherComponent extends Component
   public function edit(Teacher $teacher): void
   {
     $this->teacher_id    = $teacher->id;
+    $this->image         = $teacher->image;
     $this->name          = $teacher->name;
     $this->surname       = $teacher->surname;
     $this->middlename    = $teacher->middlename;
@@ -94,7 +104,7 @@ class TeacherComponent extends Component
 
   public function close(): void
   {
-    $this->reset('name', 'surname', 'middlename', 'date_of_birth', 'phone', 'passport');
+    $this->reset('name', 'surname', 'middlename', 'date_of_birth', 'phone', 'passport', 'image');
     $this->dispatch('close-modal');
   }
 }

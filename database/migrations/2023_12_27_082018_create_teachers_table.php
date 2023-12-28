@@ -18,6 +18,7 @@ return new class extends Migration {
       $table->string('date_of_birth');
       $table->string('phone')->nullable();
       $table->string('passport')->nullable();
+      $table->string('image')->nullable();
       $table->timestamps();
     });
   }

@@ -11,6 +11,7 @@
         <thead>
         <tr>
           <th style="width: 10px">#</th>
+          <th>Rasm</th>
           <th>F.I.O</th>
           <th>Tug'ilgan sanasi</th>
           <th>Telefon raqami</th>
@@ -21,6 +22,7 @@
         @foreach($teachers as $teacher)
           <tr>
             <td>{{ ($teachers->currentPage()-1) * $teachers ->perpage() + $loop->index +1 }}.</td>
+            <td><img src="{{ asset($teacher->image) }}" alt="" width="80" height="80"></td>
             <td>{{ $teacher->name }} {{ $teacher->surname }} {{ $teacher->middlename }}</td>
             <td>{{ $teacher->date_of_birth }}</td>
             <td>{{ $teacher->phone }}</td>
@@ -86,6 +88,13 @@
           <label>Tug'ilgan sanasi</label>
           <input type="text" wire:model="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror">
           @error('date_of_birth')
+          <span class="invalid-feedback">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label>Rasm yuklash</label>
+          <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror">
+          @error('image')
           <span class="invalid-feedback">{{ $message }}</span>
           @enderror
         </div>

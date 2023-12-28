@@ -112,18 +112,19 @@
         </div>
       </li>
       <!-- Languages Dropdown Menu -->
+      @php($languages = \App\Models\Language::getActive())
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          Русский
+          {{ $languages->firstWhere('id', app()->getLocale())?->name }}
         </a>
         <div class="dropdown-menu dropdown-lang">
-          <a href="#" class="dropdown-item">
-            English
+        @foreach($languages as $language)
+          @if($language->id != app()->getLocale())
+          <a href="{{ route('change.language', $language->id) }}" class="dropdown-item">
+            {{ $language->name }}
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            Uzbek
-          </a>
+            @endif
+          @endforeach
         </div>
       </li>
 
@@ -217,40 +218,80 @@
           </li>
           <li class="nav-header">Universitet</li>
           <li class="nav-item">
-            <a href="{{ route('admissions') }}" class="nav-link {{ activeLink('admissions*') }}">
+            <a href="{{ route('faculties.index') }}" class="nav-link {{ activeLink('faculties.*') }}">
               <i class="nav-icon fas fa-calendar-alt"></i>
-              O'quv yili
+             Fakultetlar
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('chairs') }}" class="nav-link {{ activeLink('chairs*') }}">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-school"></i>
               <p>
-                <span>Kafedra</span>
+                <span>Guruxlar</span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('sciences.index') }}" class="nav-link {{ activeLink('sciences.*') }}">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                <span>Talabalar</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>
+                <span>O'qituvchilar</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                <span>O'quv rejasi</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
               <p>
                 <span>Fanlar</span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('class_schedule.index') }}" class="nav-link {{ activeLink('class_schedule.*') }}">
-              <i class="nav-icon fas fa-clipboard-list"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
               <p>
-                <span>Dars jadvali</span>
+                <span>Baxolar</span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('teachers') }}" class="nav-link {{ activeLink('teachers*') }}">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>
-                <span>Professor-o'qituvchilar</span>
+                <span>O'quv yili</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                <span>So'rovnomalar</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                <span>Diplomlar</span>
               </p>
             </a>
           </li>
@@ -392,7 +433,7 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
-<!-- Bootstrap 4 -->
+<!-- Bootstrap 5 -->
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
 {{--<script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>--}}

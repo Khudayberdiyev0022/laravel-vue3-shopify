@@ -10,6 +10,8 @@ use Illuminate\View\View;
 class LanguageController extends Controller
 {
 
+
+
   public function index(): View
   {
     $languages = Language::all();
