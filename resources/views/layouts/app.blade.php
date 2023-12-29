@@ -75,7 +75,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">{{ __('main.home') }}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -114,7 +114,7 @@
       <!-- Languages Dropdown Menu -->
       @php($languages = \App\Models\Language::getActive())
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+        <a href="javascript:void(false)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
           {{ $languages->firstWhere('id', app()->getLocale())?->name }}
         </a>
         <div class="dropdown-menu dropdown-lang">
@@ -214,6 +214,12 @@
             <a href="{{ route('languages.index') }}" class="nav-link {{ activeLink('languages.*') }}">
               <i class="nav-icon fas fa-language"></i>
               Tizim tili
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('translations.index') }}" class="nav-link {{ activeLink('translations.*') }}">
+              <i class="nav-icon fas fa-language"></i>
+              Tarjimalar
             </a>
           </li>
           <li class="nav-header">Universitet</li>

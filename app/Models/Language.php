@@ -31,6 +31,15 @@ class Language extends Model
     return implode(', ', $state);
   }
 
+  public static function booted(): void
+  {
+    static::saved(function (self $model) {
+      Cache::forget('languages');
+    });
+    static::deleted(function (self $model) {
+      Cache::forget('languages');
+    });
+  }
   public static function getActive(): Collection|array
   {
     return Cache::remember(

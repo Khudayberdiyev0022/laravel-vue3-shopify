@@ -12,7 +12,8 @@ class InstallCommand extends Command
 
   public function handle(): void
   {
-    $this->call(InstallLanguageCommand::class);
+    $this->call(InstallLanguagesCommand::class);
+    $this->call(InstallTranslationsCommand::class);
     $this->info('Установка консольных комманды успешно завершено...');
   }
 }

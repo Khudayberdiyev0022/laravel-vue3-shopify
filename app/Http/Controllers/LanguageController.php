@@ -11,10 +11,9 @@ class LanguageController extends Controller
 {
 
 
-
   public function index(): View
   {
-    $languages = Language::all();
+    $languages = Language::query()->latest('id')->get();
 
     return view('languages.index', compact('languages'));
   }

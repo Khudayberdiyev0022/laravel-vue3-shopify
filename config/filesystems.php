@@ -35,6 +35,12 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
+        // for installTranslationsCommand
+        'base' => [
+          'driver' => 'local',
+          'root' => base_path(),
+          'throw' => false,
+        ],
 
         'public' => [
             'driver' => 'local',

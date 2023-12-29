@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Language;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,14 +24,15 @@ class AppServiceProvider extends ServiceProvider
       $this->setDefaultLanguage();
       $this->setFallbackLanguage();
     }
-
+    Json::encodeUsing(function (mixed $value) {
+      return json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    });
     //    request queries
     //    if (app()->isLocal()) {
     //      DB::listen(function ($query) {
     //        info($query->sql, $query->bindings);
     //      });
     //    }
-    //    request queries end
   }
 
   private function setDefaultLanguage(): void

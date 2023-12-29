@@ -11,6 +11,7 @@ Route::middleware('auth')->group(function () {
   Route::resource('roles', \App\Http\Controllers\RoleController::class);
   Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
   Route::resource('languages', \App\Http\Controllers\LanguageController::class)->except('show');
+  Route::resource('translations', \App\Http\Controllers\TranslationController::class);
   Route::get('users/changeStatus', [\App\Http\Controllers\UserController::class, 'changeStatus']);
   Route::resource('users', \App\Http\Controllers\UserController::class);
   Route::resource('faculties', \App\Http\Controllers\FacultyController::class);
