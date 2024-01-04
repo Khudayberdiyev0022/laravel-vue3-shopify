@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TranslationRequest;
 use App\Models\Translation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,9 +11,11 @@ use Illuminate\View\View;
 class TranslationController extends Controller
 {
 
-  public function index(): View
+  public function index(Request $request): View
   {
-    $translations = Translation::all();
+
+    $translations = Translation::query()->filter($request->all())->latest('id')->paginate(15);
+//    dd($query->latest('id')->toSql());
 
     return view('translations.index', compact('translations'));
   }
@@ -24,15 +27,10 @@ class TranslationController extends Controller
     return view('translations.create', compact('translation'));
   }
 
-  public function store(Request $request): RedirectResponse
+  public function store(TranslationRequest $request): RedirectResponse
   {
 //    dd($request->all());
-    $data = $request->validate([
-      'group'  => 'required|string|max:50|unique:translations,group',
-      'key'    => 'required|string|max:50|unique:translations,key',
-      'text'   => "required|array|exists:languages,id",
-      'text.*' => 'required|string|max:255',
-    ]);
+    $data = $request->validated();
     Translation::query()->create($data);
 
     return redirect()->route('translations.index');
@@ -48,9 +46,9 @@ class TranslationController extends Controller
     return view('translations.edit', compact('translation'));
   }
 
-  public function update(Request $request, Translation $translation): RedirectResponse
+  public function update(TranslationRequest $request, Translation $translation): RedirectResponse
   {
-    $data = $request->validate([]);
+    $data = $request->validated();
     $translation->update($data);
 
     return redirect()->route('translations.index');

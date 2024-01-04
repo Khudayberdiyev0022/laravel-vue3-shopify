@@ -194,7 +194,7 @@
               Rollar
             </a>
           </li>
-          @can('permissions.read')
+{{--          @can('permissions.read')--}}
             <li class="nav-item">
               <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions.*') }}">
                 <i class="nav-icon fas fa-user-check"></i>
@@ -203,7 +203,7 @@
                 </p>
               </a>
             </li>
-          @endcan
+{{--          @endcan--}}
           <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
               <i class="nav-icon fas fa-users"></i>
