@@ -24,17 +24,11 @@ class PermissionController extends Controller
     return view('permissions.index', compact('permissions'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
   public function create(): View
   {
     return view('permissions.create');
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
   public function store(Request $request): RedirectResponse
   {
     $request->validate(['name' => 'required']);
@@ -44,24 +38,16 @@ class PermissionController extends Controller
     return redirect()->route('permissions.index')->with('success', 'Permissions created successfully!');
   }
 
-  /**
-   * Display the specified resource.
-   */
   public function show(Permission $permission)
   {
+    //
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   */
   public function edit(Permission $permission): View
   {
     return view('permissions.edit', compact('permission'));
   }
 
-  /**
-   * Update the specified resource in storage.
-   */
   public function update(Request $request, Permission $permission): RedirectResponse
   {
     $request->validate(['name' => 'required|string']);
@@ -70,9 +56,6 @@ class PermissionController extends Controller
     return redirect()->route('permissions.index')->with('updated', 'Permissions updated successfully!');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   */
   public function destroy(Permission $permission): RedirectResponse
   {
     $permission->delete();

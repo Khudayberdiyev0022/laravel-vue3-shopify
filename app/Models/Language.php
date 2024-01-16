@@ -45,7 +45,10 @@ class Language extends Model
     return Cache::remember(
       key: 'languages',
       ttl: now()->addDay(),
-      callback: fn() => self::query()->where('active', true)->get(),
+      callback: fn() => self::query()
+        ->where('active', true)
+        ->latest('default')
+        ->get(),
     );
   }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
@@ -17,7 +18,7 @@ public function __construct()
   $this->middleware('permission:role.destroy')->only('destroy');
 }
 
-  public function index()
+  public function index(): View
   {
     $roles = Role::with('permissions')->paginate(15);
 
@@ -41,7 +42,7 @@ public function __construct()
     return view('roles.create', compact('permissions'));
   }
 
-  public function store(Request $request)
+  public function store(Request $request): RedirectResponse
   {
     $request->validate(['name' => 'required|string']);
     $role = Role::create(['name' => $request->name]);
@@ -50,12 +51,12 @@ public function __construct()
     return redirect()->route('roles.index');
   }
 
-  public function show(Role $role)
+  public function show(Role $role): View
   {
-    return view('roles.show', compact('role', 'rolePermissions'));
+    return view('roles.show', compact('role'));
   }
 
-  public function edit(Role $role)
+  public function edit(Role $role): View
   {
 //    $role = Role::with('permissions')->findOrFail($id);
     $role_permission = Permission::query()->select('name', 'id')->groupBy('name')->get();
@@ -72,7 +73,7 @@ public function __construct()
     return view('roles.edit', compact('role', 'permissions', 'role_permission'));
   }
 
-  public function update(Request $request, Role $role)
+  public function update(Request $request, Role $role): RedirectResponse
   {
     $request->validate(['name' => 'required']);
     $role->update(["name" => $request->name]);
@@ -81,7 +82,7 @@ public function __construct()
     return redirect()->route('roles.index');
   }
 
-  public function destroy(Role $role)
+  public function destroy(Role $role): RedirectResponse
   {
     $role->permissions()->detach();
     $role->delete();
