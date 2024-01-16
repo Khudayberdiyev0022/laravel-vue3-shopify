@@ -1,73 +1,83 @@
 @extends('layouts.app')
-@section('content')
-  <section class="content">
+@section('breadcrumb')
+  <div class="content-header">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <form action="{{ route('roles.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                  <label for="name" class="font-weight-normal">Role Name</label>
-                  <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="User, Editor, Author ... ">
-                  @error('name')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                  @enderror
-                </div>
-                <table class="table table-bordered permissionTable">
-                <thead>
-               <tr>
-                 <th>
-                   {{__('Section')}}
-                 </th>
-                 <th>
-                   <label class="mb-0">
-                     <input class="grand_selectall" type="checkbox">
-                     {{__('Select All') }}
-                   </label>
-                 </th>
-
-                 <th>
-                   {{__("Available permissions")}}
-                 </th>
-               </tr>
-                </thead>
-
-                  <tbody>
-                  @foreach($permissions as $key => $group)
-                    <tr class="py-8">
-                      <td class="p-6">
-                        <b>{{ ucfirst($key) }}</b>
-                      </td>
-                      <td class="p-6" width="50%">
-                        <label class="font-weight-normal">
-                          <input class="selectall" type="checkbox">
-                          {{__('Select All') }}
-                        </label>
-                      </td>
-                      <td class="p-6">
-                        @foreach($group as $permission)
-                          <label class="font-weight-normal" style="width: 50%">
-                            <input type="checkbox" name="permissions[]" class="permissioncheckbox"   value="{{ $permission->name }}">
-                            {{ \Illuminate\Support\Str::replace('.', ' ', ucfirst($permission->name)) }}
-                          </label>
-                        @endforeach
-                      </td>
-                    </tr>
-                  @endforeach
-                  </tbody>
-                </table>
-                <button type="submit" class="btn btn-primary ">
-                  Create Role
-                </button>
-              </form>
-            </div>
-          </div>
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{ __('main.role') }}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('main.roles') }}</a></li>
+            <li class="breadcrumb-item active">{{ __('main.role') }}</li>
+          </ol>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+@endsection
+@section('content')
+  <div class="card">
+    <div class="card-body">
+      <form action="{{ route('roles.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+          <label for="name" >{{ __('main.name') }}</label>
+          <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="User, Editor, Author ... ">
+          @error('name')
+          <span class="invalid-feedback">{{ $message }}</span>
+          @enderror
+        </div>
+        <table class="table table-bordered permissionTable">
+          <thead>
+          <tr>
+            <th>
+              {{__('main.groups') }}
+            </th>
+            <th>
+              <label class="mb-0">
+                <input class="grand_selectall" type="checkbox">
+                {{__('main.select_all') }}
+              </label>
+            </th>
+
+            <th>
+              {{__("main.available_permissions")}}
+            </th>
+          </tr>
+          </thead>
+
+          <tbody>
+          @foreach($permissions as $key => $group)
+            <tr class="py-8">
+              <td class="p-6">
+                <b>{{ ucfirst($key) }}</b>
+              </td>
+              <td class="p-6" width="50%">
+                <label class="font-weight-normal">
+                  <input class="selectall" type="checkbox">
+                  {{__('main.select_all') }}
+                </label>
+              </td>
+              <td class="p-6">
+                @foreach($group as $permission)
+                  <label class="font-weight-normal" style="width: 50%">
+                    <input type="checkbox" name="permissions[]" class="permissioncheckbox" value="{{ $permission->name }}">
+                    {{ \Illuminate\Support\Str::replace('.', ' ', ucfirst($permission->name)) }}
+                  </label>
+                @endforeach
+              </td>
+            </tr>
+          @endforeach
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary float-right">
+          {{ __('main.save') }}
+        </button>
+      </form>
+    </div>
+  </div>
 @endsection
 
 @push('script')

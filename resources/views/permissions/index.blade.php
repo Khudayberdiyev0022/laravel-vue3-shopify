@@ -1,12 +1,29 @@
 @extends('layouts.app')
+@section('breadcrumb')
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{ __('main.permissions') }}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ __('main.permissions') }}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
 @section('content')
   <section>
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
-          <h4>Permission List</h4>
+          <h4>{{ __('main.lists') }}</h4>
           <div>
-            <a href="{{ route('permissions.create') }}" class="btn btn-success">Create</a>
+            <a href="{{ route('permissions.create') }}" class="btn btn-success">{{ __('main.create') }}</a>
           </div>
         </div>
       </div>
@@ -16,9 +33,9 @@
             <tbody>
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Guard name</th>
-              <th>Actions</th>
+              <th>{{ __('main.name') }}</th>
+              <th>Guard {{ __('main.name') }}</th>
+              <th>{{ __('main.actions') }}</th>
             </tr>
             @foreach($permissions as $permission)
               <tr>
@@ -26,7 +43,7 @@
                 <td>{{ \Illuminate\Support\Str::replace('.', ' ', ucfirst($permission->name)) }}</td>
                 <td>{{ $permission->guard_name }}</td>
                 <td class="d-flex">
-                  <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info btn-sm mr-2"><i class="far fa-edit"></i></a>
+                  <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info btn-sm mr-2"><i class="fas fa-pencil-alt"></i></a>
                   <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

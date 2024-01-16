@@ -2,30 +2,30 @@
   <form action="{{ route('translations.index') }}" method="GET">
     <div class="row">
       <div class="col-3">
-        <div class="form-group">
+        <div class="form-group mb-0">
           <select name="group" class="form-control custom-select">
-            <option value="">Все группы</option>
+            <option value="">{{ __('main.groups') }}</option>
             @foreach(\App\Models\Translation::query()->distinct()->pluck('group') as $group)
             <option value="{{ $group }}" {{ $group === request('group') ? 'selected' : '' }}>{{ $group }}</option>
             @endforeach
           </select>
         </div>
       </div>
-      <div class="col-3">
-        <div class="form-group">
-          <input type="text" name="key" value="{{ request('key') }}" class="form-control" placeholder="Ключ">
+      <div class="col-2">
+        <div class="form-group mb-0">
+          <input type="text" name="key" value="{{ request('key') }}" class="form-control" placeholder="{{ __('main.key') }}">
         </div>
       </div>
       <div class="col-3">
-        <div class="form-group">
-          <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Поиск по тексту">
+        <div class="form-group mb-0">
+          <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="{{ __('main.text') }}">
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col" style="text-align: end">
-        <button type="submit" class="btn btn-primary">Применить</button>
-        <a href="{{ route('translations.index') }}" class="btn btn-secondary">Очистить</a>
+      <div class="col-2">
+        <a href="{{ route('translations.index') }}" class="btn btn-secondary w-100">{{ __('main.clear') }}</a>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-primary w-100">{{ __('main.apply') }}</button>
       </div>
     </div>
   </form>
