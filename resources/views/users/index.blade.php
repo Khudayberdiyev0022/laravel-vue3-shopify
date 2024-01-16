@@ -1,12 +1,29 @@
 @extends('layouts.app')
+@section('breadcrumb')
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{ __('main.users') }}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ __('main.users') }}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
 @section('content')
   <section>
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
-          <h4>Users</h4>
+          <h4>{{ __('main.lists') }}</h4>
           @can('user.create')
-            <a href="{{ route('users.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Create</a>
+            <a href="{{ route('users.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i>{{ __('main.create') }}</a>
           @endcan
         </div>
       </div>
@@ -15,12 +32,12 @@
         <table class="table table-striped table-bordered">
           <thead>
           <tr>
-            <th scope="col">S#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Roles</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
+            <th scope="col">#</th>
+            <th scope="col">{{ __('main.firstname') }}</th>
+            <th scope="col">{{ __('main.email') }}</th>
+            <th scope="col">{{ __('main.roles') }}</th>
+            <th scope="col">{{ __('main.status') }}</th>
+            <th scope="col">{{ __('main.actions') }}</th>
           </tr>
           </thead>
           <tbody>

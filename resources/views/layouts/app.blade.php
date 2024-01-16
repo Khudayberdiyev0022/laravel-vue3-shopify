@@ -130,8 +130,8 @@
 
       <li class="nav-item">
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
-          <i class="fas fa-power-off"></i>
-          {{ __('Logout') }}
+          <i class="fas fa-power-off mr-1"></i>
+          {{ __('main.logout') }}
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
           @csrf
@@ -145,10 +145,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Dashboard</span>
-    </a>
+{{--    <a href="#" class="brand-link">--}}
+{{--      <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">--}}
+{{--      <span class="brand-text font-weight-light">Dashboard</span>--}}
+{{--    </a>--}}
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -165,7 +165,7 @@
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="{{ __('main.search') }}..." aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -212,7 +212,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('languages.index') }}" class="nav-link {{ activeLink('languages.*') }}">
-              <i class="nav-icon fas fa-language"></i>
+              <i class="nav-icon fas fa-globe"></i>
               Tizim tili
             </a>
           </li>
@@ -239,7 +239,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book-open"></i>
+              <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 <span>Talabalar</span>
               </p>
@@ -247,7 +247,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-list"></i>
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 <span>O'qituvchilar</span>
               </p>
@@ -255,7 +255,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 <span>O'quv rejasi</span>
               </p>
@@ -263,7 +263,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 <span>Fanlar</span>
               </p>
@@ -271,7 +271,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 <span>Baxolar</span>
               </p>
@@ -279,7 +279,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-calendar"></i>
               <p>
                 <span>O'quv yili</span>
               </p>
@@ -287,7 +287,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-question-circle"></i>
               <p>
                 <span>So'rovnomalar</span>
               </p>
@@ -295,41 +295,11 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-book-open"></i>
               <p>
                 <span>Diplomlar</span>
               </p>
             </a>
-          </li>
-          <li class="nav-header">Talabalar</li>
-          <li class="nav-item menu-open">
-            <a href="javascript:void(false)" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Talabalar
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('bachelors.index') }}" class="nav-link {{ activeLink('bachelors.*') }}">
-                  <i class="nav-icon fas fa-graduation-cap"></i>
-                  <p>Bakalavr</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('masters.index') }}" class="nav-link {{ activeLink('masters.*') }}">
-                  <i class="nav-icon fas fa-user-graduate"></i>
-                  <p>Magistr</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('training.index') }}" class="nav-link {{ activeLink('training.*') }}">
-                  <i class="nav-icon fas fa-university"></i>
-                  <p>Malaka oshirish</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item menu-open">
             <a href="javascript:void(false)" class="nav-link active">
@@ -385,23 +355,8 @@
   <!-- Main Sidebar Container End -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    @yield('breadcrumb')
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">

@@ -1,4 +1,20 @@
 @extends('layouts.app')
+@section('breadcrumb')
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{ __('main.home') }}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
 @section('content')
   <style>
     .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
@@ -10,9 +26,8 @@
       border: none;
       border-radius: 0;
     }
-
-
   </style>
+
   <section>
     <h4 class="d-block">Kunduzgi</h4>
     <div class="row">
