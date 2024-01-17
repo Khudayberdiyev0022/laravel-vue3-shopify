@@ -28,51 +28,34 @@
         </div>
       </div>
       <div class="card-body">
-        <table class="table table-striped table-bordered">
-          <thead>
+        <table class="table table-bordered">
+          <tbody>
           <tr>
             <th>#</th>
             <th>{{ __('main.name') }}</th>
             <th>{{ __('main.permissions') }}</th>
             <th>{{ __('main.actions') }}</th>
           </tr>
-          </thead>
-          <tbody>
-          {{--              <button class="btn btn-light">--}}
-          {{--                admission--}}
-          {{--                <i class="fas fa-plus text-success mr-1"></i>--}}
-          {{--                <i class="fas fa-eye text-primary mr-1"></i>--}}
-          {{--                <i class="fas fa-pencil-alt text-info mr-1"></i>--}}
-          {{--                <i class="fas fa-trash text-danger mr-1"></i>--}}
-          {{--              </button>--}}
-
           @foreach($roles as $role)
             <tr>
               <td>{{ $role->id }}</td>
               <td>{{ $role->name }}</td>
               <td>
                 @foreach($role->permissions as $permission)
-                  {{--                      @json(\Illuminate\Support\Str::replace('.', ' ', $permission->name))--}}
                   <span class="badge badge-info p-2">{{ $permission->name }}</span>
                 @endforeach
               </td>
-              <td class="d-flex">
-                @if ($role->name!='Super Admin')
-
-                  {{--                      @can('role.edit')--}}
-                  <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info btn-sm mr-2"><i class="fas fa-pencil-alt"></i></a>
-                  {{--                      @endcan--}}
-
-                  {{--                      @can('role.destroy')--}}
-                  {{--                        @if ($role->name!=Auth::user()->hasRole($role->name))--}}
-                  <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this role?');"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                  {{--                        @endif--}}
-                  {{--                      @endcan--}}
-                @endif
+              <td>
+                <div class="d-flex">
+                  @if ($role->name!='Super Admin')
+                    <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info btn-sm mr-2"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this role?');"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                  @endif
+                </div>
               </td>
             </tr>
           @endforeach
@@ -80,9 +63,9 @@
         </table>
       </div>
       @if($roles->hasPages())
-      <div class="card-footer">
-        {{ $roles->onEachSide(0)->links() }}
-      </div>
+        <div class="card-footer">
+          {{ $roles->onEachSide(0)->links() }}
+        </div>
       @endif
     </div>
   </section>

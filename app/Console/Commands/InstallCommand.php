@@ -14,6 +14,11 @@ class InstallCommand extends Command
   {
     $this->call(InstallLanguagesCommand::class);
     $this->call(InstallTranslationsCommand::class);
+    $this->call(InstallDegreeLevelsCommand::class);
+    $this->call(InstallPartisansCommand::class);
+    $this->call(InstallNationalitiesCommand::class);
+    $this->call(InstallRegionsCommand::class);
+    $this->call(InstallCitiesCommand::class);
     $this->info('Установка консольных комманды успешно завершено...');
   }
 }

@@ -27,16 +27,14 @@
       </div>
     </div>
     <div class="card-body">
-      <table class="table table-striped table-bordered">
-        <thead>
+      <table class="table table-bordered">
+        <tbody>
         <tr>
           <th>#</th>
           <th>{{ __('main.name') }}</th>
           <th>{{ __('main.status') }}</th>
           <th>{{ __('main.actions') }}</th>
         </tr>
-        </thead>
-        <tbody>
         @foreach($languages as $language)
           {{--                @dd($language->id)--}}
           <tr>

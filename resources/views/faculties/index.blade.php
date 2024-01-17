@@ -1,28 +1,40 @@
 @extends('layouts.app')
+@section('breadcrumb')
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{ __('main.faculties') }}</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ __('main.faculties') }}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
 @section('content')
   <section>
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
-          <h4>Fakultetlar</h4>
-          @can('user.create')
-            <a href="{{ route('faculties.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Create</a>
-          @endcan
+          <h4>{{ __('main.lists') }}</h4>
+            <a href="{{ route('faculties.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i>{{ __('main.create') }}</a>
         </div>
       </div>
       <div class="card-body">
-
-        <table class="table table-striped table-bordered">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nomi</th>
-            <th scope="col">Turi</th>
-            <th scope="col">Abbr</th>
-            <th scope="col">Action</th>
-          </tr>
-          </thead>
+        <table class="table table-bordered">
           <tbody>
+          <tr>
+            <th>#</th>
+            <th>{{ __('main.name') }}</th>
+            <th>{{ __('main.type') }}</th>
+            <th>{{ __('main.abbr') }}</th>
+            <th>{{ __('main.actions') }}</th>
+          </tr>
           @foreach($faculties as $faculty)
             <tr>
               <th scope="row">{{ $loop->iteration }}</th>
