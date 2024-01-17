@@ -1,16 +1,13 @@
 <div class="card-body">
-  <table class="table table-striped table-bordered">
-    <thead>
-    <tr>
-      <th>Kod</th>
-      <th>Gurux</th>
-      <th>Kalit</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
+  <table class="table table-bordered">
     <tbody>
+    <tr>
+      <th>#</th>
+      <th>{{ __('main.groups') }}</th>
+      <th>{{ __('main.key') }}</th>
+      <th>{{ __('main.actions') }}</th>
+    </tr>
     @foreach($translations as $translation)
-      {{--                @dd($translation->id)--}}
       <tr>
         <td>{{ $translation->id }}</td>
         <td>{{ $translation->group }}</td>
@@ -30,7 +27,7 @@
   </table>
 </div>
 @if($translations->hasPages())
-<div class="card-footer">
-  {{ $translations->appends(request()->all())->links() }}
-</div>
+  <div class="card-footer">
+    {{ $translations->appends(request()->all())->links() }}
+  </div>
 @endif
