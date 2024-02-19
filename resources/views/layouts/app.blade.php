@@ -31,6 +31,32 @@
 
 </head>
 <style>
+  .loading {
+    position: relative;
+    min-height: 100vh;
+    opacity: .5;
+  }
+  .loading p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  label {
+    font-weight: normal !important;
+  }
+  .required:after {
+    content: " *";
+    color: red;
+  }
+  #preview-image {
+    width: 100%;
+    height: 250px;
+    object-position: center;
+    object-fit: contain;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
   .pagination {
     margin-bottom: 0;
   }
@@ -40,10 +66,16 @@
   .dropdown-lang {
     min-width: 6rem;
   }
+  [class*=sidebar-dark-] {
+    background: #114980;
+  }
   .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
   .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-    background: #41474d;
+    background: #1e5b97;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  }
+  [class*=sidebar-dark] .btn-sidebar, [class*=sidebar-dark] .form-control-sidebar {
+    background: #1e5b97;
   }
   [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview {
     padding-left: 15px;
@@ -51,10 +83,60 @@
   [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active,
   [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active:focus,
   [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active:hover {
-    background: #41474d;
+    background: #1e5b97;
     color: #fff;
   }
+  .icheck-primary > input:first-child:checked + input[type=hidden] + label::before,
+  .icheck-primary > input:first-child:checked + label::before {
+    background-color: #114980;
+  }
+  .btn-primary {
+    background-color: #114980;
+  }
 
+  .page-item.active .page-link {
+    background-color: #114980;
+  }
+  .btn-primary:hover {
+    background-color: #1e5b97;
+    border-color: transparent;
+  }
+  .page-link:focus {
+    box-shadow: none;
+  }
+  .brand-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .brand-link__sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    text-align: center;
+    background: #145493;
+    border-radius: 0 0 35px 35px;
+  }
+  .brand-logo__img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  .brand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .brand-name {
+    display: block;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+  }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
