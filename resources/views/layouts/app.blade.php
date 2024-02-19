@@ -143,9 +143,9 @@
 
 
   <!-- Preloader -->
-{{--      <div class="preloader flex-column justify-content-center align-items-center">--}}
-{{--        <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">--}}
-{{--      </div>--}}
+  {{--      <div class="preloader flex-column justify-content-center align-items-center">--}}
+  {{--        <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">--}}
+  {{--      </div>--}}
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -194,15 +194,15 @@
       <!-- Languages Dropdown Menu -->
       @php($languages = \App\Models\Language::getActive())
       <li class="nav-item dropdown">
-        <a href="javascript:void(false)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
+        <a href="javascript:void(false)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
           {{ $languages->firstWhere('id', app()->getLocale())?->name }}
         </a>
         <div class="dropdown-menu dropdown-lang">
-        @foreach($languages as $language)
-          @if($language->id != app()->getLocale())
-          <a href="{{ route('change.language', $language->id) }}" class="dropdown-item">
-            {{ $language->name }}
-          </a>
+          @foreach($languages as $language)
+            @if($language->id != app()->getLocale())
+              <a href="{{ route('change.language', $language->id) }}" class="dropdown-item">
+                {{ $language->name }}
+              </a>
             @endif
           @endforeach
         </div>
@@ -234,8 +234,9 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-{{--            <x-alert />--}}
-            @if(session()->has(['success', 'error', 'warning', 'info'])))
+            {{--            <x-alert />--}}
+            @if(session()->has(['success', 'error', 'warning', 'info']))
+              )
               @include('components.alert')
             @endif
             {{ $slot ?? ''}}
