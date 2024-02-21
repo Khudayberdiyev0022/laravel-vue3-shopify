@@ -2,88 +2,102 @@
 
 namespace App\Livewire;
 
-use App\Models\Admission;
-use App\Models\Chair;
+use App\Models\Department;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ChairComponent extends Component
 {
+  use WithPagination;
 
-  public string $name, $chair_id;
+  public int     $type = 1;
+  public ?string $title_uz, $title_ru, $chair_id;
 
-  #[Validate([
-    'name' => 'required|string|max:255',
-  ])]
   public function render(): View
   {
-    $chairs = Chair::query()->latest()->paginate(15);
+    $chairs = Department::query()->where('type', $this->type)->latest()->paginate(15);
 
     return view('livewire.chair-component', compact('chairs'));
   }
 
+  #[Validate([
+    'title_uz' => 'required|string|max:255',
+    'title_ru' => 'nullable|string|max:255',
+  ])]
   public function create(): void
   {
-    $chair = new Chair();
+    $chair = new Department();
 
     $this->dispatch('show-create');
   }
 
   public function store(): void
   {
-    $data = $this->validate();
-    Chair::query()->create($data);
-    session()->flash('success', 'New student has been added successfully');
+    $this->validate();
+    $data                = [];
+    $data['type']        = $this->type;
+    $data['title']['uz'] = $this->title_uz;
+    $data['title']['ru'] = $this->title_ru;
+//    dd($data);
+    Department::query()->create($data);
+    session()->flash('success',  __('main.success_region'));
+
     $this->close();
   }
 
-  public function show(Chair $chair): void
+  public function show(Department $chair): void
   {
-    $this->name = $chair->name;
-
+    $json           = json_decode($chair, true);
+    $this->title_uz = $json['title']['uz'];
+    $this->title_ru = $json['title']['ru'];
     $this->dispatch('show-view');
   }
 
-  public function edit(Chair $chair): void
+  public function edit(Department $chair): void
   {
     $this->chair_id = $chair->id;
-    $this->name = $chair->name;
+    $json           = json_decode($chair, true);
+    $this->title_uz = $json['title']['uz'];
+    $this->title_ru = $json['title']['ru'];
+
     $this->dispatch('show-edit');
   }
 
   public function update(): void
   {
-    $data  = $this->validate();
-    $chair = Chair::query()->findOrFail($this->chair_id);
+    $this->validate();
+    $data                = [];
+    $data['type']        = $this->type;
+    $data['title']['uz'] = $this->title_uz;
+    $data['title']['ru'] = $this->title_ru;
+//    dd($data);
+    $chair = Department::query()->findOrFail($this->chair_id);
     $chair->update($data);
-
-    session()->flash('message', 'Chair has been updated successfully');
-
-    $this->close();
+    session()->flash('updated',  __('main.updated_region'));
+    $this->dispatch('close-modal');
   }
 
-  public function delete(Chair $chair): void
+  public function delete(Department $chair): void
   {
     $this->chair_id = $chair->id;
-
     $this->dispatch('show-delete');
   }
 
   public function deleteConfirm(): void
   {
-    $chair = Chair::query()->findOrFail($this->chair_id);
+    $chair = Department::query()->findOrFail($this->chair_id);
     $chair->delete();
 
-    session()->flash('message', 'Chair has been deleted successfully');
+    session()->flash('deleted',  __('main.deleted_region'));
 
     $this->close();
   }
 
-
   public function close(): void
   {
-    $this->reset('name');
+    $this->reset('title_uz', 'title_ru');
     $this->dispatch('close-modal');
   }
 }

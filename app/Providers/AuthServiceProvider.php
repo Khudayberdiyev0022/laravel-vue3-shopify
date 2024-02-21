@@ -21,10 +21,10 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
-    {
-      Gate::before(function (User $user, string $ability) {
-        return $user->hasRole('Super Admin') ? true : null;
-      });
-    }
+  public function boot(): void
+  {
+    Gate::before(function (User $user) {
+      return $user->roles->where('super', true)->isNotEmpty() ?: null;
+    });
+  }
 }

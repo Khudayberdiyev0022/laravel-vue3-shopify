@@ -11,7 +11,7 @@ class InstallDegreeLevelsCommand extends Command
 
   protected $description = 'Установка уровня родственников';
 
-  public function handle(): void
+  public function handle()
   {
     $this->installDegreeLevels();
     $this->info('Установка уровня родственников...');

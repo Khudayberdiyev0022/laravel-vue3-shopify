@@ -12,13 +12,15 @@ class InstallCommand extends Command
 
   public function handle(): void
   {
-    $this->call(InstallLanguagesCommand::class);
-    $this->call(InstallTranslationsCommand::class);
+    $this->call(InstallUsersCommand::class);
+    $this->call(InstallPermissionsCommand::class);
+    $this->call(InstallNationalitiesCommand::class);
     $this->call(InstallDegreeLevelsCommand::class);
     $this->call(InstallPartisansCommand::class);
-    $this->call(InstallNationalitiesCommand::class);
+    $this->call(InstallDepartmentsCommand::class);
     $this->call(InstallRegionsCommand::class);
-    $this->call(InstallCitiesCommand::class);
+    $this->call(InstallLanguagesCommand::class);
+    $this->call(InstallTranslationsCommand::class);
     $this->info('Установка консольных комманды успешно завершено...');
   }
 }

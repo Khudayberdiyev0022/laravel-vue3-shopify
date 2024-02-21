@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Translatable\HasTranslations;
 
@@ -17,5 +18,14 @@ class City extends Model
   public function region(): HasOne
   {
     return $this->hasOne(Region::class, 'id', 'region_id');
+  }
+//  public function districts(): HasMany
+//  {
+//    return $this->hasMany(District::class);
+//  }
+
+  public function employeeInfo(): HasMany
+  {
+    return $this->hasMany(EmployeeInfo::class);
   }
 }
