@@ -31,7 +31,7 @@
         <li class="nav-item">
           <a href="{{ route('home') }}" class="nav-link {{ activeLink('home') }}">
             <i class="nav-icon fas fa-home"></i>
-            {{ __('main.home') }}
+            <p>{{ __('main.home') }}</p>
           </a>
         </li>
 
@@ -40,21 +40,19 @@
         <li class="nav-item">
           <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles*') }}">
             <i class="nav-icon fas fa-lock"></i>
-            {{ __('main.roles') }}
+            <p>{{ __('main.roles') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions*') }}">
             <i class="nav-icon fas fa-key"></i>
-            <p>
-              <span>{{ __('main.permissions') }}</span>
-            </p>
+            <p>{{ __('main.permissions') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users*') }}">
             <i class="nav-icon fas fa-users"></i>
-            {{ __('main.users') }}
+            <p>{{ __('main.users') }}</p>
           </a>
         </li>
 
@@ -63,7 +61,7 @@
         <li class="nav-item">
           <a href="{{ route('nationalities.index') }}" class="nav-link {{ activeLink('nationalities*') }}">
             <i class="nav-icon fas fa-globe-americas"></i>
-            {{ __('main.nationalities') }}
+           <p>{{ __('main.nationalities') }}</p>
           </a>
         </li>
 {{--        <li class="nav-item">--}}
@@ -75,25 +73,25 @@
         <li class="nav-item">
           <a href="{{ route('regions.index') }}" class="nav-link {{ activeLink('regions*') }}">
             <i class="nav-icon fas fa-map-marked-alt"></i>
-            {{ __('main.regions') }}
+            <p>{{ __('main.regions') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('degreelevels.index') }}" class="nav-link {{ activeLink('degreelevels*') }}">
             <i class="nav-icon fas fa-people-arrows"></i>
-            {{ __('main.degree_levels') }}
+            <p>{{ __('main.degree_levels') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('languages.index') }}" class="nav-link {{ activeLink('languages*') }}">
             <i class="nav-icon fas fa-globe"></i>
-            {{ __('main.language_system') }}
+            <p>{{ __('main.language_system') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('translations.index') }}" class="nav-link {{ activeLink('translations*') }}">
             <i class="nav-icon fas fa-language"></i>
-            {{ __('main.translations') }}
+            <p>{{ __('main.translations') }}</p>
           </a>
         </li>
 
@@ -104,79 +102,61 @@
         <li class="nav-item">
           <a href="{{ route('chairs.index') }}" class="nav-link {{ activeLink('chairs*') }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
-            {{ __('main.chairs') }}
+            <p>{{ __('main.chairs') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-school"></i>
-            <p>
-              <span>{{ __('main.groups') }}</span>
-            </p>
+            <p>{{ __('main.groups') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-user-graduate"></i>
-            <p>
-              <span>{{ __('main.students') }}</span>
-            </p>
+            <p>{{ __('main.students') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>
-              <span>{{ __('main.teachers') }}</span>
-            </p>
+            <p>{{ __('main.teachers') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-newspaper"></i>
-            <p>
-              <span>{{ __('main.edu_plain') }}</span>
-            </p>
+            <p>{{ __('main.edu_plain') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
-            <p>
-              <span>{{ __('main.sciences') }}</span>
-            </p>
+            <p>{{ __('main.sciences') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
-            <p>
-              <span>{{ __('main.grades') }}</span>
-            </p>
+            <p>{{ __('main.grades') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-calendar"></i>
-            <p>
-              <span>{{ __('main.edu_year') }}</span>
-            </p>
+            <p>{{ __('main.edu_year') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-question-circle"></i>
-            <p>
-              <span>{{ __('main.surveys') }}</span>
-            </p>
+            <p>{{ __('main.surveys') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book-open"></i>
-            <p>
-              <span>{{ __('main.diplomas') }}</span>
-            </p>
+            <p>{{ __('main.diplomas') }}</p>
           </a>
         </li>
         <li class="nav-item menu-open">
@@ -211,17 +191,13 @@
         <li class="nav-item">
           <a href="{{ route('sync.index') }}" class="nav-link {{ activeLink('sync*') }}">
             <i class="nav-icon fas fa-sync-alt"></i>
-            <p>
-              <span>{{ __('main.sync_lessons') }}</span>
-            </p>
+            <p>{{ __('main.sync_lessons') }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('files.index') }}" class="nav-link {{ activeLink('files*') }}">
             <i class="nav-icon fas fa-folder-open"></i>
-            <p>
-              <span>{{ __('main.file_management') }}</span>
-            </p>
+            <p>{{ __('main.file_management') }}</p>
           </a>
         </li>
       </ul>
