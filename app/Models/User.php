@@ -3,16 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\HasPermissions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable
 {
-  use  HasFactory, Notifiable, HasRoles;
+  use Notifiable, HasPermissions, HasTranslations;
 
-  protected $fillable = ['name', 'email', 'password', 'status'];
-  protected $hidden = ['password', 'remember_token'];
-  protected $casts = ['email_verified_at' => 'datetime', 'password' => 'hashed'];
+  public array $translatable = ['name'];
+  protected    $fillable     = ['name', 'email', 'password', 'admin',];
+  protected    $hidden       = ['password',];
+  protected    $casts        = ['admin' => 'boolean', 'name' => 'array', 'password' => 'hashed',];
+
+
 }

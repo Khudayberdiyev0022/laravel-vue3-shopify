@@ -13,29 +13,54 @@ class InstallRegionsCommand extends Command
   public function handle(): void
   {
     $this->installRegions();
+    $this->installCities();
+//    $this->installDistricts();
     $this->info('Установка регионов...');
   }
 
   private function installRegions(): void
   {
-    $regions = [
-      ['id' => 1, 'title' => ['uz' => 'Andijon vil.', 'ru' => 'Андижанская обл.',]],
-      ['id' => 2, 'title' => ['uz' => 'Buxoro vil.', 'ru' => 'Бухарская обл.',]],
-      ['id' => 3, 'title' => ['uz' => 'Jizzax vil.', 'ru' => 'Джизакская обл.',]],
-      ['id' => 4, 'title' => ['uz' => 'Qoraqalpog`iston Respublikasi', 'ru' => 'Республика Каракалпакстан',]],
-      ['id' => 5, 'title' => ['uz' => 'Qashqadaryo vil.', 'ru' => 'Кашкадарьинская обл.',]],
-      ['id' => 6, 'title' => ['uz' => 'Navoiy vil.', 'ru' => 'Навоийская обл',]],
-      ['id' => 7, 'title' => ['uz' => 'Namangan vil.', 'ru' => 'Наманганская обл.',]],
-      ['id' => 8, 'title' => ['uz' => 'Samarqand vil.', 'ru' => 'Самаркандская обл.',]],
-      ['id' => 9, 'title' => ['uz' => 'Surhandaryo vil.', 'ru' => 'Сурхандарьинская обл.',]],
-      ['id' => 10, 'title' => ['uz' => 'Sirdaryo vil.', 'ru' => 'Сырдарьинская обл.',]],
-      ['id' => 11, 'title' => ['uz' => 'Toshkent vil.', 'ru' => 'Ташкентская обл.',]],
-      ['id' => 12, 'title' => ['uz' => 'Farg`ona vil.', 'ru' => 'Ферганская обл.',]],
-      ['id' => 13, 'title' => ['uz' => 'Xorazm vil.', 'ru' => 'Хорезмская обл.',]],
-    ];
-    foreach ($regions as $region) {
-      $region['title'] = json_encode($region['title'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-      \App\Models\Region::query()->upsert($region, 'id');
+    $filepath = public_path('files/csv/regions.csv');
+    $regions  = csvToArray($filepath);
+    $data     = [];
+    foreach ($regions as $key => $region) {
+      unset($region['name_oz']);
+      $data['title'] = json_encode(["uz" => $region['name_uz'] ,"ru" => $region['name_ru']], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+      $data['id'] = ++$key;
+
+      \App\Models\Region::query()->upsert($data, 'id');
     }
   }
+  private function installCities(): void
+  {
+    $filepath = public_path('files/csv/cities.csv');
+    $cities   = csvToArray($filepath);
+    $data     = [];
+    foreach ($cities as $key => $city) {
+
+      unset($city['name_oz']);
+      $data['region_id'] = $city['region_id'];
+      $data['title']     = json_encode(["uz" => $city['name_uz'], "ru" => $city['name_ru']], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+      $data['id'] = ++$key;
+
+      \App\Models\City::query()->upsert($data, 'id');
+    }
+
+  }
+//  private function installDistricts(): void
+//  {
+//    $filename  = public_path('files/csv/districts.csv');
+//    $districts = csvToArray($filename);
+//    $data      = [];
+//
+//    if (is_array($districts)) {
+//      foreach ($districts as $key => $district) {
+//        unset($district['name_oz']);
+//        $data['city_id'] = $district['city_id'];
+//        $data['title']   = json_encode(["uz" => $district['name_uz'], "ru" => $district['name_ru']], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+//
+//        \App\Models\District::query()->upsert($data, 'id');
+//      }
+//    }
+//  }
 }

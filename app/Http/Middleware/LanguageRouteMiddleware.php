@@ -18,7 +18,7 @@ class LanguageRouteMiddleware
   {
     $this->prefix = Language::routePrefix();
     $this->currentLanguage = app()->getLocale();
-    $this->defaultLanguage = Language::findDefault()->id;
+    $this->defaultLanguage = Language::findDefault()->id ?? 'uz';
   }
 
   // для определения префикса

@@ -1,27 +1,34 @@
 @extends('layouts.app')
 @section('content')
+  @push('parent')
+    <li class="breadcrumb-item"><a href="{{ route('regions.index') }}">{{ __('main.regions') }}</a></li>
+  @endpush
+  @include('components.breadcrumb', ['active' => __('main.region')])
   <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h4 class="title">{{ __('main.info') }}</h4>
-      <form action="{{ route('regions.destroy', $region->id) }}" method="POST">
-        @method('DELETE')
-        @csrf
-        <button type="submit" class="btn btn-danger" onclick="return confirm('are_you_sure')">
-          <i class="fas fa-trash"></i>
-          {{ __('main.delete') }}
-        </button>
-      </form>
+    <div class="card-header">
+      <div class="d-flex justify-content-between">
+        <h4>{{ __('main.info') }}</h4>
+        @can('destroy', \App\Models\Region::class)
+        <form action="{{ route('regions.destroy', $region->id) }}" method="POST">
+          @method('DELETE')
+          @csrf
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are_you_sure')">
+            <i class="fas fa-trash"></i>
+            {{ __('main.delete') }}
+          </button>
+        </form>
+        @endcan
+      </div>
     </div>
 
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <tr>
-            <th>{{ __('main.name') }}</th>
-            <td> {{ $region->title }}</td>
-          </tr>
-        </table>
-      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th>{{ __('main.name') }}</th>
+          <td> {{ $region->title }}</td>
+        </tr>
+      </table>
     </div>
   </div>
+  @include('regions.cities.table')
 @endsection

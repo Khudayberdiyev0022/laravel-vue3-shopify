@@ -5,11 +5,11 @@
     <div class="card">
       <div class="card-header">
         <div class="float-start">
-          Create Faculty
+          Create Chair
         </div>
       </div>
       <div class="card-body">
-        <form action="{{ route('faculties.store') }}" method="POST">
+        <form action="{{ route('chairs.store') }}" method="POST">
           @csrf
           <div class="form-group">
             <label for="name">Nomi</label>

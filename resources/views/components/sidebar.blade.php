@@ -1,21 +1,14 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-{{--      <a href="#" class="brand-link">--}}
-{{--        <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">--}}
-{{--        <span class="brand-text font-weight-light">LMS</span>--}}
-{{--      </a>--}}
+  <div class="brand-link__sidebar">
+    <img src="{{ asset('assets/images/logo.svg') }}" alt="BrandLogo" class="brand-image mb-2">
+    <span class="brand-name brand-text font-weight-light">{!! __('main.brand_name') !!}</span>
+  </div>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <a href="#" class="d-block">Admin</a>
-      </div>
-    </div>
+    <div class="user-panel pb-3 mb-3 d-flex"></div>
 
     <!-- SidebarSearch Form -->
     <div class="form-inline">
@@ -36,7 +29,7 @@
         {{--        MAIN     --}}
         <li class="nav-header">{{ __('main.main') }}</li>
         <li class="nav-item">
-          <a href="{{ route('index') }}" class="nav-link {{ activeLink('index') }}">
+          <a href="{{ route('home') }}" class="nav-link {{ activeLink('home') }}">
             <i class="nav-icon fas fa-home"></i>
             {{ __('main.home') }}
           </a>
@@ -45,13 +38,13 @@
         {{--        ADMINSTRATION     --}}
         <li class="nav-header">{{ __('main.administrator') }}</li>
         <li class="nav-item">
-          <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles.*') }}">
+          <a href="{{ route('roles.index') }}" class="nav-link {{ activeLink('roles*') }}">
             <i class="nav-icon fas fa-lock"></i>
             {{ __('main.roles') }}
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions.*') }}">
+          <a href="{{ route('permissions.index') }}" class="nav-link {{ activeLink('permissions*') }}">
             <i class="nav-icon fas fa-key"></i>
             <p>
               <span>{{ __('main.permissions') }}</span>
@@ -59,7 +52,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users.*') }}">
+          <a href="{{ route('users.index') }}" class="nav-link {{ activeLink('users*') }}">
             <i class="nav-icon fas fa-users"></i>
             {{ __('main.users') }}
           </a>
@@ -68,37 +61,37 @@
         {{--        SETTINGS      --}}
         <li class="nav-header">{{ __('main.settings') }}</li>
         <li class="nav-item">
-          <a href="{{ route('nationalities.index') }}" class="nav-link {{ activeLink('nationalities.*') }}">
+          <a href="{{ route('nationalities.index') }}" class="nav-link {{ activeLink('nationalities*') }}">
             <i class="nav-icon fas fa-globe-americas"></i>
             {{ __('main.nationalities') }}
           </a>
         </li>
+{{--        <li class="nav-item">--}}
+{{--          <a href="{{ route('partisans.index') }}" class="nav-link {{ activeLink('partisans*') }}">--}}
+{{--            <i class="nav-icon fas fa-street-view"></i>--}}
+{{--            {{ __('main.partisans') }}--}}
+{{--          </a>--}}
+{{--        </li>--}}
         <li class="nav-item">
-          <a href="{{ route('partisans.index') }}" class="nav-link {{ activeLink('partisans.*') }}">
-            <i class="nav-icon fas fa-street-view"></i>
-            {{ __('main.partisans') }}
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('regions.index') }}" class="nav-link {{ activeLink('regions.*') }}">
+          <a href="{{ route('regions.index') }}" class="nav-link {{ activeLink('regions*') }}">
             <i class="nav-icon fas fa-map-marked-alt"></i>
             {{ __('main.regions') }}
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('degreelevels.index') }}" class="nav-link {{ activeLink('degreelevels.*') }}">
+          <a href="{{ route('degreelevels.index') }}" class="nav-link {{ activeLink('degreelevels*') }}">
             <i class="nav-icon fas fa-people-arrows"></i>
             {{ __('main.degree_levels') }}
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('languages.index') }}" class="nav-link {{ activeLink('languages.*') }}">
+          <a href="{{ route('languages.index') }}" class="nav-link {{ activeLink('languages*') }}">
             <i class="nav-icon fas fa-globe"></i>
             {{ __('main.language_system') }}
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('translations.index') }}" class="nav-link {{ activeLink('translations.*') }}">
+          <a href="{{ route('translations.index') }}" class="nav-link {{ activeLink('translations*') }}">
             <i class="nav-icon fas fa-language"></i>
             {{ __('main.translations') }}
           </a>
@@ -109,9 +102,9 @@
         {{--        UNIVERSITY      --}}
         <li class="nav-header">{{ __('main.university') }}</li>
         <li class="nav-item">
-          <a href="{{ route('faculties.index') }}" class="nav-link {{ activeLink('faculties.*') }}">
+          <a href="{{ route('chairs.index') }}" class="nav-link {{ activeLink('chairs*') }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
-            {{ __('main.faculties') }}
+            {{ __('main.chairs') }}
           </a>
         </li>
         <li class="nav-item">
@@ -196,19 +189,19 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('intermediate.index') }}" class="nav-link {{ activeLink('intermediate.*') }}">
+              <a href="{{ route('intermediate.index') }}" class="nav-link {{ activeLink('intermediate*') }}">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>{{ __('main.intermediate') }}</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('test.index') }}" class="nav-link {{ activeLink('test.*') }}">
+              <a href="{{ route('test.index') }}" class="nav-link {{ activeLink('test*') }}">
                 <i class="nav-icon fas fa-feather-alt"></i>
                 <p>{{ __('main.test') }}</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('speaking.index') }}" class="nav-link {{ activeLink('speaking.*') }}">
+              <a href="{{ route('speaking.index') }}" class="nav-link {{ activeLink('speaking*') }}">
                 <i class="nav-icon fas fa-volume-up"></i>
                 <p>{{ __('main.speaking') }}</p>
               </a>
@@ -216,7 +209,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="{{ route('sync.index') }}" class="nav-link {{ activeLink('sync.*') }}">
+          <a href="{{ route('sync.index') }}" class="nav-link {{ activeLink('sync*') }}">
             <i class="nav-icon fas fa-sync-alt"></i>
             <p>
               <span>{{ __('main.sync_lessons') }}</span>
@@ -224,7 +217,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('files.index') }}" class="nav-link {{ activeLink('files.*') }}">
+          <a href="{{ route('files.index') }}" class="nav-link {{ activeLink('files*') }}">
             <i class="nav-icon fas fa-folder-open"></i>
             <p>
               <span>{{ __('main.file_management') }}</span>

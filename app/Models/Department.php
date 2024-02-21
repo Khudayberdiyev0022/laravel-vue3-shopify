@@ -2,13 +2,25 @@
 
 namespace App\Models;
 
-use App\Traits\Locale;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
 class Department extends Model
 {
-  use HasFactory, Locale;
+  use HasTranslations;
 
-  protected $fillable = ['title_uz', 'title_ru', 'title_en', 'title_ar', 'phone', 'email'];
+  protected    $fillable     = ['type', 'title'];
+  public array $translatable = ['title'];
+  protected    $casts        = ['type' => 'boolean', 'title' => 'array'];
+
+  public function positions(): HasMany
+  {
+    return $this->hasMany(Position::class);
+  }
+
+  public function employeePosition(): HasMany
+  {
+    return $this->hasMany(EmployeePosition::class);
+  }
 }

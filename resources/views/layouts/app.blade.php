@@ -6,6 +6,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
+  <link rel="shortcut icon" href="{{ asset('assets/images/logo.svg') }}" type="image/x-icon"/>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -110,24 +111,35 @@
     justify-content: center;
     align-items: center;
   }
+  .sidebar-collapse .brand-link__sidebar {
+    padding: 5px;
+  }
+  .sidebar-collapse .brand-image {
+    margin-bottom: 0 !important;
+
+  }
+  .sidebar-collapse .brand-name {
+    display: none;
+  }
   .brand-link__sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     padding: 15px 20px;
     text-align: center;
-    background: #145493;
-    border-radius: 0 0 35px 35px;
+    /*background: #145493;*/
+    /*border-radius: 0 0 35px 35px;*/
   }
-  .brand-logo__img {
-    width: 100px;
-    height: 100px;
-    margin: auto;
-  }
+  /*.brand-logo__img {*/
+  /*  width: 150px;*/
+  /*  height: 150px;*/
+  /*  margin: auto;*/
+  /*}*/
   .brand-image {
     width: 100%;
     height: 100%;
+    max-height: 150px;
     object-fit: contain;
     object-position: center;
   }
@@ -137,15 +149,18 @@
     line-height: 24px;
     color: #fff;
   }
+  /*.preloader {*/
+  /*  background: #fff;*/
+  /*}*/
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
 
   <!-- Preloader -->
-  {{--      <div class="preloader flex-column justify-content-center align-items-center">--}}
-  {{--        <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">--}}
-  {{--      </div>--}}
+{{--  <div class="preloader flex-column justify-content-center align-items-center">--}}
+{{--    <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">--}}
+{{--  </div>--}}
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -155,7 +170,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('index') }}" class="nav-link">{{ __('main.home') }}</a>
+        <a href="{{ route('home') }}" class="nav-link">{{ __('main.home') }}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">{{ __('main.contact') }}</a>

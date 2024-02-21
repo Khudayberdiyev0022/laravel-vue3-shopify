@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
+use App\Models\Chair;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class FacultyController extends Controller
+class ChairController extends Controller
 {
 
   public function index(): View
   {
-    $faculties = Faculty::all();
+    $chairs = Chair::all();
 
-    return view('faculties.index', compact('faculties'));
+    return view('chairs.index', compact('chairs'));
   }
 
   public function create(): View
   {
-    $faculty = new Faculty();
+    $chair = new Chair();
 
-    return view('faculties.create', compact('faculty'));
+    return view('chairs.create', compact('chair'));
   }
 
   /**
@@ -33,41 +33,41 @@ class FacultyController extends Controller
       'type'    => 'required|integer',
       'name'    => 'required',
       'content' => 'nullable',
-      'abbr'    => 'required|string|unique:faculties,abbr',
+      'abbr'    => 'required|string|unique:chairs,abbr',
     ]);
 
 //    dd($data);
 
-    Faculty::query()->firstOrCreate($data);
+    Chair::query()->firstOrCreate($data);
 
-    return redirect()->route('faculties.index');
+    return redirect()->route('chairs.index');
   }
 
-  public function edit(Faculty $faculty): View
+  public function edit(Chair $chair): View
   {
-    return view('faculties.edit', compact('faculty'));
+    return view('chairs.edit', compact('chair'));
   }
 
 
-  public function update(Request $request, Faculty $faculty): RedirectResponse
+  public function update(Request $request, Chair $chair): RedirectResponse
   {
     $data = $request->validate([
       'type'    => 'required|integer',
       'name'    => 'required',
       'content' => 'nullable',
-      'abbr'    => 'required|string|unique:faculties,abbr,'.$faculty->id,
+      'abbr'    => 'required|string|unique:chairs,abbr,'.$chair->id,
     ]);
 
 //    dd($data);
-    $faculty->update($data);
+    $chair->update($data);
 
-    return redirect()->route('faculties.index');
+    return redirect()->route('chairs.index');
   }
 
-  public function destroy(Faculty $faculty): RedirectResponse
+  public function destroy(Chair $chair): RedirectResponse
   {
-    $faculty->delete();
+    $chair->delete();
 
-    return redirect()->route('faculties.index');
+    return redirect()->route('chairs.index');
   }
 }

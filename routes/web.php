@@ -1,46 +1,92 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminPermissionController;
+use App\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\DegreeLevelController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NationalityController;
 use App\Http\Controllers\PartisanController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use Illuminate\Support\Facades\Route;
 
 
-Auth::routes();
+// вход
+Route::middleware('guest')->group(function () {
+  Route::redirect('/', 'login');
+  Route::get('login', [AuthController::class, 'login'])->name('login');
+  Route::post('login', [AuthController::class, 'loginStore'])->name('login.store');
+});
 
-Route::middleware('auth')->group(callback: function () {
-  Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+// админка
+Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('language/{language}', \App\Http\Controllers\IndexController::class)->name('change.language');
-  Route::resource('roles', \App\Http\Controllers\RoleController::class);
-  Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
+  Route::get('home', [HomeController::class, 'home'])->name('home');
+  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+  // пользователи
+  Route::get('users', \App\Livewire\UserComponent::class)->name('users.index');
+
+  // админы
+  Route::resource('admins', AdminController::class);
+
+  // роли админа
+  Route::get('admins/{admin}/roles/create', [AdminRoleController::class, 'create'])->name('admins.roles.create');
+  Route::post('admins/{admin}/roles/attach', [AdminRoleController::class, 'attach'])->name('admins.roles.attach');
+  Route::post('admins/{admin}/roles/detach', [AdminRoleController::class, 'detach'])->name('admins.roles.detach');
+
+  // полномочия админа
+  Route::get('admins/{admin}/permissions/create', [AdminPermissionController::class, 'create'])->name('admins.permissions.create');
+  Route::post('admins/{admin}/permissions/attach', [AdminPermissionController::class, 'attach'])->name('admins.permissions.attach');
+  Route::post('admins/{admin}/permissions/detach', [AdminPermissionController::class, 'detach'])->name('admins.permissions.detach');
+
+  // роли
+  Route::resource('roles', RoleController::class);
+
+  // полномочия роли
+  Route::get('roles/{role}/permissions/create', [RolePermissionController::class, 'create'])->name('roles.permissions.create');
+  Route::post('roles/{role}/permissions/attach', [RolePermissionController::class, 'attach'])->name('roles.permissions.attach');
+  Route::post('roles/{role}/permissions/detach', [RolePermissionController::class, 'detach'])->name('roles.permissions.detach');
+
+  // полномочия
+  Route::resource('permissions', PermissionController::class);
+
+
   Route::resource('languages', \App\Http\Controllers\LanguageController::class)->except('show');
   Route::resource('translations', \App\Http\Controllers\TranslationController::class);
-  Route::get('users/changeStatus', [\App\Http\Controllers\UserController::class, 'changeStatus']);
-  Route::resource('users', \App\Http\Controllers\UserController::class);
-  Route::resource('faculties', \App\Http\Controllers\FacultyController::class);
 
+  Route::resource('chairs', \App\Http\Controllers\ChairController::class);
+
+
+  // отделы
+  Route::get('departments', \App\Livewire\DepartmentComponent::class)->name('departments.index');
+
+  // кафедры
+  Route::get('chairs', \App\Livewire\ChairComponent::class)->name('chairs.index');
+
+  // должности
+  Route::get('positions', \App\Livewire\PositionComponent::class)->name('positions.index');
+
+  // кафедры
+  Route::get('groups', \App\Livewire\GroupComponent::class)->name('groups.index');
+
+  // националности
+  Route::get('nationalities', \App\Livewire\NationalityComponent::class)->name('nationalities.index');
 
   // степень родства
-  Route::get('degreelevels', [DegreeLevelController::class, 'index'])->name('degreelevels.index');
-  Route::get('degreelevels/create', [DegreeLevelController::class, 'create'])->name('degreelevels.create');
-  Route::post('degreelevels', [DegreeLevelController::class, 'store'])->name('degreelevels.store');
-  Route::get('degreelevels/{degreelevel}', [DegreeLevelController::class, 'show'])->name('degreelevels.show');
-  Route::delete('degreelevels/{degreelevel}', [DegreeLevelController::class, 'destroy'])->name('degreelevels.destroy');
+  Route::get('degreelevels', \App\Livewire\DegreeLevelComponent::class)->name('degreelevels.index');
 
-  // партии
-  Route::get('partisans', [PartisanController::class, 'index'])->name('partisans.index');
-  Route::get('partisans/create', [PartisanController::class, 'create'])->name('partisans.create');
-  Route::post('partisans', [PartisanController::class, 'store'])->name('partisans.store');
-  Route::get('partisans/{partisan}', [PartisanController::class, 'show'])->name('partisans.show');
-  Route::delete('partisans/{partisan}', [PartisanController::class, 'destroy'])->name('partisans.destroy');
+  // регионы
+  Route::resource('regions', RegionController::class);
+  Route::get('regions/{region}/cities/{city}', [RegionController::class, 'showCity'])->name('regions.cities.show');
 
-  // национальности
-  Route::get('nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
-  Route::get('nationalities/create', [NationalityController::class, 'create'])->name('nationalities.create');
-  Route::post('nationalities', [NationalityController::class, 'store'])->name('nationalities.store');
-  Route::get('nationalities/{nationality}', [NationalityController::class, 'show'])->name('nationalities.show');
-  Route::delete('nationalities/{nationality}', [NationalityController::class, 'destroy'])->name('nationalities.destroy');
+  // города
+  Route::resource('cities', CityController::class);
 
 
   // регионы

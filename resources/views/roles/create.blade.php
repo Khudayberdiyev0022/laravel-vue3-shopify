@@ -1,166 +1,28 @@
 @extends('layouts.app')
-@section('breadcrumb')
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">{{ __('main.role') }}</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('index') }}">{{ __('main.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('main.roles') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('main.role') }}</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-@endsection
 @section('content')
+  @push('parent')
+    <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('main.roles') }}</a></li>
+  @endpush
+  @include('components.breadcrumb', ['active' => __('main.create')])
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('roles.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-          <label for="name" >{{ __('main.name') }}</label>
-          <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="User, Editor, Author ... ">
-          @error('name')
-          <span class="invalid-feedback">{{ $message }}</span>
-          @enderror
-        </div>
-        <table class="table table-bordered permissionTable">
-          <thead>
-          <tr>
-            <th>
-              {{__('main.groups') }}
-            </th>
-            <th>
-              <label class="mb-0">
-                <input class="grand_selectall" type="checkbox">
-                {{__('main.select_all') }}
-              </label>
-            </th>
-
-            <th>
-              {{__("main.available_permissions")}}
-            </th>
-          </tr>
-          </thead>
-
-          <tbody>
-          @foreach($permissions as $key => $group)
-            <tr class="py-8">
-              <td class="p-6">
-                <b>{{ ucfirst($key) }}</b>
-              </td>
-              <td class="p-6" width="50%">
-                <label class="font-weight-normal">
-                  <input class="selectall" type="checkbox">
-                  {{__('main.select_all') }}
-                </label>
-              </td>
-              <td class="p-6">
-                @foreach($group as $permission)
-                  <label class="font-weight-normal" style="width: 50%">
-                    <input type="checkbox" name="permissions[]" class="permissioncheckbox" value="{{ $permission->name }}">
-                    {{ \Illuminate\Support\Str::replace('.', ' ', ucfirst($permission->name)) }}
-                  </label>
-                @endforeach
-              </td>
-            </tr>
-          @endforeach
-          </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary float-right">
-          {{ __('main.save') }}
-        </button>
-      </form>
+      @can('create', \App\Models\Role::class)
+        <form action="{{ route('roles.store') }}" method="POST">
+          @csrf
+          <div class="row align-items-end">
+            <div class="col-8">
+              <label class="form-label">{{ __('main.name') }} *</label>
+              <input type="text" name="name" class="form-control" autofocus>
+            </div>
+            <div class="col-2">
+              <a href="{{ route('roles.index') }}" class="btn btn-light w-100">{{ __('main.cancel') }}</a>
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary w-100">{{ __('main.save') }}</button>
+            </div>
+          </div>
+        </form>
+      @endcan
     </div>
   </div>
 @endsection
-
-@push('script')
-  <script>
-      $(".permissionTable").on('click', '.selectall', function () {
-          if ($(this).is(':checked')) {
-              $(this).closest('tr').find('[type=checkbox]').prop('checked', true);
-          } else {
-              $(this).closest('tr').find('[type=checkbox]').prop('checked', false);
-          }
-          calcu_allchkbox();
-      });
-
-      $(".permissionTable").on('click', '.grand_selectall', function () {
-          if ($(this).is(':checked')) {
-              $('.selectall').prop('checked', true);
-              $('.permissioncheckbox').prop('checked', true);
-          } else {
-              $('.selectall').prop('checked', false);
-              $('.permissioncheckbox').prop('checked', false);
-          }
-      });
-
-      $(function () {
-          calcu_allchkbox();
-          selectall();
-      });
-
-      function selectall() {
-          $('.selectall').each(function (i) {
-              var allchecked = new Array();
-              $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
-                  if ($(this).is(":checked")) {
-                      allchecked.push(1);
-                  } else {
-                      allchecked.push(0);
-                  }
-              });
-              if ($.inArray(0, allchecked) != -1) {
-                  $(this).prop('checked', false);
-              } else {
-                  $(this).prop('checked', true);
-              }
-          });
-      }
-
-      function calcu_allchkbox() {
-          var allchecked = new Array();
-          $('.selectall').each(function (i) {
-              $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
-                  if ($(this).is(":checked")) {
-                      allchecked.push(1);
-                  } else {
-                      allchecked.push(0);
-                  }
-              });
-          });
-          if ($.inArray(0, allchecked) != -1) {
-              $('.grand_selectall').prop('checked', false);
-          } else {
-              $('.grand_selectall').prop('checked', true);
-          }
-
-      }
-
-      $('.permissionTable').on('click', '.permissioncheckbox', function () {
-          var allchecked = new Array;
-          $(this).closest('tr').find('.permissioncheckbox').each(function (index) {
-              if ($(this).is(":checked")) {
-                  allchecked.push(1);
-              } else {
-                  allchecked.push(0);
-              }
-          });
-
-          if ($.inArray(0, allchecked) != -1) {
-              $(this).closest('tr').find('.selectall').prop('checked', false);
-          } else {
-              $(this).closest('tr').find('.selectall').prop('checked', true);
-          }
-
-          calcu_allchkbox();
-
-      });
-  </script>
-@endpush
