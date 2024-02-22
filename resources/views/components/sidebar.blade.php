@@ -36,19 +36,6 @@
         </li>
         {{--        UNIVERSITY      --}}
         <li class="nav-header">{{ __('main.university') }}</li>
-{{--        <li class="nav-item">--}}
-{{--          <a href="{{ route('chairs.index') }}" class="nav-link {{ activeLink('chairs*') }}">--}}
-{{--            <i class="nav-icon fas fa-calendar-alt"></i>--}}
-{{--            <p>{{ __('main.chairs') }}</p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
-{{--        <li class="nav-item">--}}
-{{--          <a href="#" class="nav-link">--}}
-{{--            <i class="nav-icon fas fa-school"></i>--}}
-{{--            <p>{{ __('main.groups') }}</p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
-
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -73,12 +60,6 @@
             <p>{{ __('main.sciences') }}</p>
           </a>
         </li>
-{{--        <li class="nav-item">--}}
-{{--          <a href="#" class="nav-link">--}}
-{{--            <i class="nav-icon fas fa-chart-bar"></i>--}}
-{{--            <p>{{ __('main.grades') }}</p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-calendar"></i>
