@@ -88,23 +88,24 @@ Route::middleware(['auth', 'admin'])->group(function () {
   // города
   Route::resource('cities', CityController::class);
 
+  Route::get('education', [\App\Http\Controllers\EducationController::class, 'index'])->name('education.index');
 
   // регионы
-  Route::get('regions', [RegionController::class, 'index'])->name('regions.index');
-  Route::get('regions/create', [RegionController::class, 'create'])->name('regions.create');
-  Route::post('regions', [RegionController::class, 'store'])->name('regions.store');
-  Route::get('regions/{region}', [RegionController::class, 'show'])->name('regions.show');
-  Route::delete('regions/{region}', [RegionController::class, 'destroy'])->name('regions.destroy');
-
-  Route::get('divisions', fn() => 'divisions')->name('divisions.index');
-  Route::get('sciences', fn() => 'sciences')->name('sciences.index');
-  Route::get('class-schedule', fn() => 'class_schedule')->name('class_schedule.index');
-  Route::get('bachelors', fn() => 'bachelors')->name('bachelors.index');
-  Route::get('masters', fn() => 'masters')->name('masters.index');
-  Route::get('training', fn() => 'training')->name('training.index');
-  Route::get('intermediate', fn() => 'intermediate')->name('intermediate.index');
-  Route::get('test', fn() => 'test')->name('test.index');
-  Route::get('speaking', fn() => 'speaking')->name('speaking.index');
-  Route::get('sync', fn() => 'sync')->name('sync.index');
-  Route::get('files', fn() => 'files')->name('files.index');
+//  Route::get('regions', [RegionController::class, 'index'])->name('regions.index');
+//  Route::get('regions/create', [RegionController::class, 'create'])->name('regions.create');
+//  Route::post('regions', [RegionController::class, 'store'])->name('regions.store');
+//  Route::get('regions/{region}', [RegionController::class, 'show'])->name('regions.show');
+//  Route::delete('regions/{region}', [RegionController::class, 'destroy'])->name('regions.destroy');
+//
+//  Route::get('divisions', fn() => 'divisions')->name('divisions.index');
+//  Route::get('sciences', fn() => 'sciences')->name('sciences.index');
+//  Route::get('class-schedule', fn() => 'class_schedule')->name('class_schedule.index');
+//  Route::get('bachelors', fn() => 'bachelors')->name('bachelors.index');
+//  Route::get('masters', fn() => 'masters')->name('masters.index');
+//  Route::get('training', fn() => 'training')->name('training.index');
+//  Route::get('intermediate', fn() => 'intermediate')->name('intermediate.index');
+//  Route::get('test', fn() => 'test')->name('test.index');
+//  Route::get('speaking', fn() => 'speaking')->name('speaking.index');
+//  Route::get('sync', fn() => 'sync')->name('sync.index');
+//  Route::get('files', fn() => 'files')->name('files.index');
 });
