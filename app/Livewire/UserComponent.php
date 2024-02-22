@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
@@ -12,7 +13,14 @@ class UserComponent extends Component
 {
   use WithPagination;
 
+  public $roles         = [];
+  public $selectedRoles = [];
   public ?string $name_uz, $name_ru, $email, $password, $user_id;
+
+  public function mount()
+  {
+    $this->roles = Role::query()->get();
+  }
 
   public function render(): View
   {
@@ -26,6 +34,7 @@ class UserComponent extends Component
     'name_ru'  => ['nullable', 'string', 'max:50'],
     'email'    => ['required', 'string', 'max:50', 'email'],
     'password' => ['nullable', 'string', 'max:50'],
+    'roles'    => ['required'],
   ])]
   public function create(): void
   {
@@ -42,9 +51,10 @@ class UserComponent extends Component
     $data['name']['ru'] = $this->name_ru;
     $data['email']      = $this->email;
     $data['password']   = bcrypt($this->password);
-
+    $data['roles']      = $this->selectedRoles;
+    dd($data);
     User::query()->create($data);
-    session()->flash('success',  __('main.success_user'));
+    session()->flash('success', __('main.success_user'));
 
     $this->close();
   }
@@ -54,7 +64,7 @@ class UserComponent extends Component
     $json          = json_decode($user, true);
     $this->name_uz = $json['name']['uz'];
     $this->name_ru = $json['name']['ru'];
-    $this->email = $user->email;
+    $this->email   = $user->email;
     $this->dispatch('show-view');
   }
 
@@ -64,7 +74,7 @@ class UserComponent extends Component
     $json          = json_decode($user, true);
     $this->name_uz = $json['name']['uz'];
     $this->name_ru = $json['name']['ru'];
-    $this->email = $user->email;
+    $this->email   = $user->email;
 
     $this->dispatch('show-edit');
   }
@@ -80,7 +90,7 @@ class UserComponent extends Component
 
     $user = User::query()->findOrFail($this->user_id);
     $user->update($data);
-    session()->flash('updated',  __('main.updated_user'));
+    session()->flash('updated', __('main.updated_user'));
     $this->dispatch('close-modal');
   }
 
@@ -95,7 +105,7 @@ class UserComponent extends Component
     $user = User::query()->findOrFail($this->user_id);
     $user->delete();
 
-    session()->flash('deleted',  __('main.deleted_user'));
+    session()->flash('deleted', __('main.deleted_user'));
 
     $this->close();
   }

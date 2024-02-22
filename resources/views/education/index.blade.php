@@ -11,6 +11,9 @@
       max-height: 180px;
       object-fit: contain;
     }
+    .educations .card-footer {
+      background: #f8f9fc;
+    }
   </style>
 
 <div class="educations">
@@ -34,8 +37,8 @@
               </a>
             </div>
             <div class="card-footer text-center">
-              <a href="#" class="font-weight-bold text-gray-800 text-uppercase">
-                {{ __('main.departments') }}
+              <a href="{{ route('chairs.index') }}" class="font-weight-bold text-gray-800 text-uppercase">
+                {{ __('main.chairs') }}
               </a>
             </div>
           </div>
@@ -65,7 +68,7 @@
             </div>
             <div class="card-footer text-center">
               <a href="#" class="font-weight-bold text-gray-800 text-uppercase">
-                {{ __('main.terms') }}
+                {{ __('main.groups') }}
               </a>
             </div>
           </div>

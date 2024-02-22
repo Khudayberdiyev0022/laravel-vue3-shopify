@@ -83,6 +83,43 @@
           @enderror
         </div>
         <div class="form-group">
+          <div wire:ignore>
+            <label for="roleSelect" class="form-label">Select Tasks</label>
+            <select class="form-select" id="roleSelect" multiple>
+              @foreach($roles as $role)
+                <option id="{{ $role->id }}">{{ $role->getName() }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="my-3">
+            Selected Tasks :
+            @forelse($selectedRoles as $role)
+              {{$role }},
+            @empty
+              None
+            @endforelse
+          </div>
+{{--          <label for="roles">{{ __('main.roles') }}</label>--}}
+{{--          <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" multiple aria-label="Roles" id="roles">--}}
+{{--            @foreach($roles as $role)--}}
+{{--              @if ($role!='Super Admin')--}}
+{{--                <option value="{{ $role }}" {{ in_array($role, old('roles') ?? []) ? 'selected' : '' }}>--}}
+{{--                  {{ $role->getName() }}--}}
+{{--                </option>--}}
+{{--              @else--}}
+{{--                @if (Auth::user()->hasRole('Super Admin'))--}}
+{{--                  <option value="{{ $role }}" {{ in_array($role, old('roles') ?? []) ? 'selected' : '' }}>--}}
+{{--                    {{ $role->getName() }}--}}
+{{--                  </option>--}}
+{{--                @endif--}}
+{{--              @endif--}}
+{{--            @endforeach--}}
+{{--          </select>--}}
+{{--          @error('roles')--}}
+{{--          <span class="text-danger">{{ $message }}</span>--}}
+{{--          @enderror--}}
+        </div>
+        <div class="form-group">
           <button type="submit" class="btn btn-primary" style="float: right"><i class="fas fa-save mr-1"></i> {{ __('main.save') }}</button>
         </div>
       </form>
@@ -119,29 +156,29 @@
     <x-slot name="body">
       <form wire:submit="update">
         <div class="form-group">
-          <label class="required" for="name_uz">{{ __('main.name') }} ({{ __('main.uzbek') }})</label>
-          <input type="text" wire:model="name_uz" class="form-control @error('name_uz') is-invalid @enderror" id="name_uz">
+          <label class="required" for="name_uz-edit">{{ __('main.name') }} ({{ __('main.uzbek') }})</label>
+          <input type="text" wire:model="name_uz" class="form-control @error('name_uz') is-invalid @enderror" id="name_uz-edit">
           @error('name_uz')
           <span class="invalid-feedback">{{ $message }}</span>
           @enderror
         </div>
         <div class="form-group">
-          <label for="name_ru">{{ __('main.name') }} ({{ __('main.russian') }})</label>
-          <input type="text" wire:model="name_ru" class="form-control @error('name_ru') is-invalid @enderror" id="name_ru">
+          <label for="name_ru-edit">{{ __('main.name') }} ({{ __('main.russian') }})</label>
+          <input type="text" wire:model="name_ru" class="form-control @error('name_ru') is-invalid @enderror" id="name_ru-edit">
           @error('name_ru')
           <span class="invalid-feedback">{{ $message }}</span>
           @enderror
         </div>
         <div class="form-group">
-          <label for="email">{{ __('main.email') }}</label>
-          <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror" id="email">
+          <label for="email-edit">{{ __('main.email') }}</label>
+          <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror" id="email-edit">
           @error('email')
           <span class="invalid-feedback">{{ $message }}</span>
           @enderror
         </div>
         <div class="form-group">
-          <label for="password">{{ __('main.password') }}</label>
-          <input type="password" wire:model="password" class="form-control @error('password') is-invalid @enderror" id="password">
+          <label for="password-edit">{{ __('main.password') }}</label>
+          <input type="password" wire:model="password" class="form-control @error('password') is-invalid @enderror" id="password-edit">
           @error('password')
           <span class="invalid-feedback">{{ $message }}</span>
           @enderror
@@ -164,5 +201,22 @@
       <button class="btn btn-sm btn-danger" wire:click="deleteConfirm()">{{ __('main.delete_yes') }}</button>
     </x-slot>
   </x-modal>
+
 </section>
+
+@push('script')
+  <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
+  <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
+  <script>
+      $(document).ready(function() {
+          $('#roleSelect').select2();
+
+          $('#roleSelect').on('change', function (e) {
+          @this.set('selectedRoles', $(this).val());
+          });
+      });
+  </script>
+@endpush
+
+
 
