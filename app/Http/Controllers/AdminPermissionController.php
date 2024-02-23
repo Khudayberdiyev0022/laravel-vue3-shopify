@@ -10,6 +10,14 @@ class AdminPermissionController extends Controller
 {
   public function create(User $admin)
   {
+//    $referrals = $user->referrals()
+//      ->with('referrals')
+//      ->whereHas('operations', function ($q) use ($user) {
+//        $q->where('referral_id', $user->id);
+//      })
+//      ->orderBy('created_at', 'desc')
+//      ->paginate(20);
+
     $permissions = Permission::query()
       ->whereNotIn('id', $admin->permissions->pluck('id'))
       ->oldest('action')
