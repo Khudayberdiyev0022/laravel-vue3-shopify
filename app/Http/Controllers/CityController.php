@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\District;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -13,7 +14,11 @@ class CityController extends Controller
 
   public function index(): View
   {
-    $this->authorize('view', City::class);
+    try {
+      $this->authorize('view', City::class);
+    } catch (AuthorizationException $e) {
+      abort(403, $e->getMessage());
+    }
     $cities = City::query()->with('region')->latest()->get();
 
     return view('cities.index', compact('cities'));
@@ -21,7 +26,12 @@ class CityController extends Controller
 
   public function create(): View
   {
-    $this->authorize('create', City::class);
+    try {
+      $this->authorize('create', City::class);
+    } catch (AuthorizationException $e) {
+      abort(403, $e->getMessage());
+    }
+
     return view('cities.create');
   }
 
@@ -40,13 +50,22 @@ class CityController extends Controller
 
   public function show(City $city): View
   {
-    $this->authorize('view', City::class);
+    try {
+      $this->authorize('view', City::class);
+    } catch (AuthorizationException $e) {
+      abort(403, $e->getMessage());
+    }
+
     return view('cities.show', compact('city'));
   }
 
   public function delete(City $city): RedirectResponse
   {
-    $this->authorize('destroy', City::class);
+    try {
+      $this->authorize('destroy', City::class);
+    } catch (AuthorizationException $e) {
+      abort(403, $e->getMessage());
+    }
     $city->delete();
     session()->flash('deleted', __('main.deleted_city'));
 
