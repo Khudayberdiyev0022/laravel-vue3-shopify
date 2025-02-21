@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!--  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">-->
+  <!--  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>-->
+  <link rel="stylesheet" href="libs/aos/aos.min.css">
+  <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css"/>
+  <link rel="stylesheet" href="./assets/css/media.css"/>
+</head>
+<body>
+
+<section class="vacansies-slug content">
+  <div class="container">
+    <div class="vacansies-slug__wrapper">
+      <div class="vacansies-slug__title">
+        <h1>Тендер на закупаемой мебели для нужд Университета
+        </h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="https://bucheon.uz/ru/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="https://bucheon.uz/ru/p/tenders">Тендеры</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Перечень закупаемой мебели для нужд Университета Пучон в г.Ташкенте</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="vacansies-slug__all reception">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="vacansies-slug__contact">
+              <b>Срок до 15 февраля, 09:00.</b>
+              <em>
+                Контакты:
+              </em>
+              <em>
+                +998 78 150 40 02
+              </em>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="vacansies-slug__info row">
+              <b class="mb-3">ПЕРЕЧЕНЬ
+                Канцелярские товары
+                покупаемые для нужд университета Пучон в городе Ташкенте
+              </b><br>
+              <div class="desktop-table__none table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th class="text-center">№</th>
+                    <th class="text-center">Наименование товаров</th>
+                    <th class="text-center">Количество</th>
+                    <th class="text-center">Размеры</th>
+                    <th class="text-center">Описание</th>
+                  </tr>
+                  </thead>
+                  <tbody class="bg-white">
+                  <tr>
+                    <td class="text-center br">1</td>
+                    <td class="text-center br">Офисный стул</td>
+                    <td class="text-center br">400</td>
+                    <td class="text-center br">Цвет: чёрный, серый, бежевый. Размеры Ш х Г х В: 440х520х820.</td>
+                    <td class="text-center">Офисный стул для офиса, учащихся и посетителей — это практичная и удобная модель, идеально подходящая для создания комфортной рабочей атмосферы. Легкий и стильный, с прочной металлической и пластико-вым каркасом, он легко впишется в любой интерьер. Мягкая сидушка и спинка обеспечивают достаточную поддержку и комфорт во время учёбы, встреч и ожидания. Стул легко очищается и устойчив к износу, что делает его отличным выбором для офисов, школь, залов ожидания и конференц-залов.</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

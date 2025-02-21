@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>
+  <style>
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      padding: 15px 0;
+      margin: 0 auto
+    }
+    .img-block {
+      width: 100%;
+      height: 65px;
+      text-align: center;
+    }
+    img {
+      width: 65px;
+      height: 100%;
+    }
+
+    .table-transcript {
+      width: 100%;
+      font-family: "Times New Roman";
+      font-weight: normal;
+      border: 1px solid;
+      border-spacing: 0;
+      border-top: 1px solid #fff !important;
+    }
+    .table-transcript thead tr:first-child td {
+      border-top: none !important;
+    }
+    .table-transcript > thead tr:first-child td {
+      border-left: none;
+    }
+    .table-transcript > thead tr:first-child td {
+      border-left: none !important;
+      border-right: none !important;
+      position: relative;
+    }
+    .table-transcript > thead tr:first-child td:first-child:before {
+      position: absolute;
+      content: "";
+      left: -2px;
+      top: 0;
+      height: 100%;
+      width: 10px;
+      background: #fff;
+    }
+    .table-transcript > thead tr:first-child td:last-child:before {
+      position: absolute;
+      content: "";
+      right: -2px;
+      top: 0;
+      height: 100%;
+      width: 10px;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 1pt 5pt;
+      border: 1px solid #000;
+      text-align: center;
+      font-size: 12pt;
+    }
+    .table-transcript__body .odd-row {
+      background: #e7e6e6;
+    }
+
+    /*p {*/
+    /*  text-align: center;*/
+    /*  margin-block-start: 2px;*/
+    /*  margin-block-end: 2px;*/
+    /*}*/
+    /*small {*/
+    /*  display: block;*/
+    /*  font-size: 16px;*/
+    /*  margin-top: 5px;*/
+    /*}*/
+    .w-28 {
+      width: 36px !important;
+      height: 25px !important;
+    }
+    .w-40 {
+      width: 50px !important;
+      height: 25px !important;
+    }
+    .w-105 {
+      width: 105px !important;
+    }
+    .w-140 {
+      width: 140px !important;
+    }
+
+    .w-140 p {
+      max-width: 140px;
+      margin: 8px auto;
+    }
+
+    .table-transcript__body {
+      padding: 0 !important;
+      border: none;
+    }
+    .table-transcript__body table {
+      width: 100%;
+      border-spacing: 0 !important;
+      border: 1px solid;
+    }
+    .dashed {
+      border-style: dashed;
+    }
+    .dashed-lrb {
+      border-left-style: dashed;
+      border-right-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .dashed-lrt {
+      border-left-style: dashed;
+      border-right-style: dashed;
+      border-top-style: dashed;
+    }
+    /*.dashed-rt {*/
+    /*  border-right-style: dashed;*/
+    /*  border-bottom-style: dashed;*/
+    /*}*/
+    .dashed-y {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .dashed-b {
+      border-bottom-style: dashed;
+    }
+    .dashed-t {
+      border-top-style: dashed;
+    }
+    .dashed-rb {
+      border-right-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .border-top__none {
+      border-top: none;
+      vertical-align: baseline;
+    }
+    .fullname {
+      width: 175px;
+    }
+  </style>
+
+</head>
+<body>
+<div>
+  <div class="container">
+    <table class="table-transcript">
+      <thead>
+      <tr>
+        <td colspan="4"></td>
+        <td colspan="8"></td>
+        <td colspan="13" rowspan="2"><b>출석부</b></td>
+        <td colspan="2">04/01/2025</td>
+      </tr>
+      <tr>
+        <td class="w-40">2025</td>
+        <td colspan="2" class="w-40">년도</td>
+        <td colspan="2" class="w-40"></td>
+        <td class="w-40">학년</td>
+        <td colspan="2" class="w-40"></td>
+        <td colspan="4" class="w-40"></td>
+        <td colspan="2">담당교수</td>
+      </tr>
+      <tr>
+        <td colspan="4">학과</td>
+        <td colspan="8" class="w-140">Корейский язык и менеджмент</td>
+        <td colspan="2">교수명</td>
+        <td colspan="2"></td>
+        <td colspan="2">학점</td>
+        <td colspan="2"></td>
+        <td colspan="3">실습</td>
+        <td colspan="2"></td>
+        <td colspan="2" rowspan="3"></td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td colspan="8">3224A</td>
+        <td colspan="2">과목</td>
+        <td colspan="11"></td>
+      </tr>
+      <tr>
+        <td colspan="4">시간</td>
+        <td colspan="21"></td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="4" class="w-105">사진</td>
+        <td colspan="2" rowspan="2">성명</td>
+        <td colspan="6">주차</td>
+        <td class="w-28">1</td>
+        <td class="w-28">2</td>
+        <td class="w-28">3</td>
+        <td class="w-28">4</td>
+        <td class="w-28">5</td>
+        <td class="w-28">6</td>
+        <td class="w-28">7</td>
+        <td class="w-28">8</td>
+        <td class="w-28">9</td>
+        <td class="w-28">10</td>
+        <td class="w-28">11</td>
+        <td class="w-28">12</td>
+        <td class="w-28">13</td>
+        <td class="w-28">14</td>
+        <td class="w-28">15</td>
+        <td class="w-40">지각</td>
+        <td class="w-40"></td>
+      </tr>
+      <tr>
+        <td colspan="6" rowspan="2" class="">
+          수업일
+          수업시수
+        </td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-28 dashed-b"></td>
+        <td class="w-40 border-bottom__none">조 퇴</td>
+        <td class="w-40 border-bottom__none">결 석</td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="2" class="">결 석</td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-28 dashed-y"></td>
+        <td class="w-40 border-top__none" rowspan="2">시수</td>
+        <td class="w-40 border-top__none" rowspan="2">수</td>
+      </tr>
+      <tr>
+        <td colspan="6" height="25px">보강일</td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+        <td class="w-28 dashed-t"></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/92/01/e7/12c1eb8ad80443ce941d13833e2c08b7/12c1eb8ad80443ce941d13833e2c08b7.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">XAMDAMOV ASADULLO <br/>24320116</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/d5/4e/b2/0d1579a36cb34648b6b4d662d093f94c/0d1579a36cb34648b6b4d662d093f94c.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">PAK VIKTORIYA <br/>24320019</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/d5/4e/b2/0d1579a36cb34648b6b4d662d093f94c/0d1579a36cb34648b6b4d662d093f94c.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">GINYATULLINA AMALIYA <br/>24320110</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/82/55/d6/400375d9afca42a9b80715b38ca49786/400375d9afca42a9b80715b38ca49786.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">SOY MAKSIM <br/>24320003</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/c4/45/28/2cfe871b37524f2e83fde97fc83e4cb4/2cfe871b37524f2e83fde97fc83e4cb4.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">MUKUMOVA XUSNIDA <br/>24320083</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/f6/4b/66/6a32cddb1a4d40f88b801e8bbb813ca4/6a32cddb1a4d40f88b801e8bbb813ca4.png" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">IBROHIMOVA SAVRINISO MOMIN KIZI <br/>24320243</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/e3/32/16/4874dccafd9a4a648601155125bab017/4874dccafd9a4a648601155125bab017.png" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">KURBONALIEVA GULNOZA BAXTIYOR QIZI <br/>24320235</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/b7/f4/47/983e87e794714916ab20d8039e7ff823/983e87e794714916ab20d8039e7ff823.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">KOMULJONOVA ISMIGUL <br/>24320078</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/3e/fa/1e/2c12b336d53444edbb1b57cd167795ec/2c12b336d53444edbb1b57cd167795ec.jpg" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">SHUHRATBEKOVA DILZODAXON KOMOLXON QIZI <br/>24320245</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/a4/d7/df/cf04bcadf2714979893fea9a4b289572/cf04bcadf2714979893fea9a4b289572.png" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">YUSUPOV AKBARJON <br/>24320043</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/d6/ae/53/b61c0207f2394e1892f43f8c61fe0f80/b61c0207f2394e1892f43f8c61fe0f80.jpg" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">POLYAZOV SULTONBEK <br/>24320104</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/2e/2c/d4/9d3f8b6db8744ec3b2b722b4fd94d741/9d3f8b6db8744ec3b2b722b4fd94d741.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">MANSUROVA SITORA <br/>24320098</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/3d/5b/01/a9192281ce2043ce8753294341c746da/a9192281ce2043ce8753294341c746da.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">SHIN ARTYOM <br/>24320007</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/ba/c9/a6/bc4f02173f8745e389ba13df724237f1/bc4f02173f8745e389ba13df724237f1.jpeg" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">ABDIMALIKOVA SEVINCH TO’LQINOVNA <br/>24320240</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100 odd-row">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/3a/42/9c/65082266e01a4ed680e6b539d8f835b5/65082266e01a4ed680e6b539d8f835b5.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">KLEVCHENKO KSENIYA <br/>24320100</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="27" class="table-transcript__body">
+          <table class="w-100">
+            <tbody>
+            <tr>
+              <td colspan="2" rowspan="4" class="w-105">
+                <div class="img-block">
+                  <img src="https://bucheon.uz/assets/Users/da/41/9d/b95d01d91cff4649b218c9f637d1aacc/b95d01d91cff4649b218c9f637d1aacc.JPG" alt="">
+                </div>
+              </td>
+              <td colspan="8" rowspan="4" class="fullname">INAGAMOVA LAZOKATXON <br/>24320039</td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td class="w-28 dashed-lrb"></td>
+              <td rowspan="4" class="w-40"></td>
+              <td rowspan="4" class="w-40"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+              <td class="w-28 dashed"></td>
+            </tr>
+            <tr>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+              <td class="w-28 dashed-lrt"></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

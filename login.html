@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bucheon University in Tashkent | Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="./assets/css/app.css"/>
+  <link rel="stylesheet" href="./assets/css/media.css"/>
+</head>
+<style>
+  @media (max-width: 768px) {
+    .login-wrapper {
+      width: 100%;
+    }
+    .login-wrapper {
+      padding: 20px;
+    }
+    .login-wrapper::before {
+      width: 100%;
+      height: -webkit-fill-available;
+      left: 0;
+    }
+    .login-all {
+      flex-direction: column;
+    }
+    .login-logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .login .form-control {
+      background: transparent;
+    }
+    .login-forms {
+      width: 100%;
+    }
+    .login-forms h2 {
+      text-align: center;
+    }
+    .login input[type="text"] {
+      padding: 15px;
+    }
+  }
+</style>
+
+<body>
+
+<div class="login">
+  <div class="container">
+    <div class="login-wrapper">
+      <div class="login-all">
+        <div class="login-logo">
+          <img src="./assets/img/logo.png" alt="#">
+        </div>
+        <div class="login-forms">
+          <h2>Вход</h2>
+          <form action="">
+            <div class="form-control">
+              <label for="login">Логин</label>
+              <input type="text" placeholder="Введите номер телефона без знака +">
+            </div>
+            <div class="form-control">
+              <label for="password">Пароль</label>
+              <input type="text" placeholder="Введите пароль">
+            </div>
+            <small>Данные логина и пароля были отправлены в виде смс-сообщения</small>
+            <div class="saved-password">
+              <div class="form-check">
+                <div>
+                  <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Запомнить меня
+                  </label>
+                </div>
+                <a href="#!" class="forgot-password">Восстановить пароль</a>
+              </div>
+              <input type="submit" name="" id="" placeholder="Войти" class="login-submit blue">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="./js/app.js"></script>
+</body>
+
+</html>
