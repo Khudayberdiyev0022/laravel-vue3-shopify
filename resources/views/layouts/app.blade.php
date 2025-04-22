@@ -148,6 +148,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('admin.categories.index') }}" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
@@ -168,6 +176,14 @@
               <i class="nav-icon fas fa-palette"></i>
               <p>
                 Colors
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.products.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-tshirt"></i>
+              <p>
+                Products
               </p>
             </a>
           </li>
