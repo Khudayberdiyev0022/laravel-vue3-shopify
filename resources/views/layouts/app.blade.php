@@ -180,6 +180,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('admin.groups.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>
+                Groups
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('admin.products.index') }}" class="nav-link">
               <i class="nav-icon fas fa-tshirt"></i>
               <p>
