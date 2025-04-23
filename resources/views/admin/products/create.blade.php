@@ -46,6 +46,26 @@
                     <label for="preview_image">Image</label>
                     <input type="file" class="form-control" id="preview_image" name="preview_image" placeholder="Enter preview_image">
                   </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="product_images">Product Image</label>
+                        <input type="file" class="form-control" id="product_images" name="product_images[]" placeholder="Enter product_images">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="product_images[]">Product Image</label>
+                        <input type="file" class="form-control" id="product_images" name="product_images[]" placeholder="Enter product_images">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="product_images[]">Product Image</label>
+                        <input type="file" class="form-control" id="product_images" name="product_images[]" placeholder="Enter product_images">
+                      </div>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label for="price">Price</label>
                     <input type="number" class="form-control" id="price" name="price" placeholder="Enter price">
@@ -78,7 +98,7 @@
                     <label for="color_id">Colors</label>
                     <select name="color_id[]" id="color_id" multiple>
                       @foreach($colors as $color)
-                        <option value="{{ $color->id }}">{{ $color->name }}</option>
+                        <option value="{{ $color->id }}">{{ $color->code }}</option>
                       @endforeach
                     </select>
                   </div>

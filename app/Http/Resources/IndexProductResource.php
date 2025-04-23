@@ -6,11 +6,10 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductResource extends JsonResource
+class IndexProductResource extends JsonResource
 {
   public function toArray(Request $request): array
   {
-    $products = Product::query()->where('group_id', $this->group_id)->get();
 
     return [
       'id'             => $this->id,
@@ -22,8 +21,6 @@ class ProductResource extends JsonResource
       'is_published'   => $this->is_published,
       'image_url'      => $this->imageUrl,
       'category'       => CategoryResource::make($this->category),
-      'group_products' => ProductMinResource::collection($products),
-      'product_images' => ProductImageResource::collection($this->productImages),
     ];
   }
 }

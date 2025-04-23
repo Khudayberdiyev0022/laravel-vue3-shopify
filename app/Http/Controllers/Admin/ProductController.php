@@ -31,23 +31,35 @@ class ProductController extends Controller
   public function store(Request $request)
   {
     $data = $request->validate([
-      'category_id'   => 'required',
-      'title'         => 'required',
-      'description'   => 'nullable',
-      'content'       => 'nullable',
-      'price'         => 'required',
-      'count'         => 'required',
-      'preview_image' => 'nullable',
-      'is_published'  => 'nullable',
+      'category_id'    => 'required',
+      'title'          => 'required',
+      'description'    => 'nullable',
+      'content'        => 'nullable',
+      'price'          => 'required',
+      'count'          => 'required',
+      'is_published'   => 'nullable',
+      'preview_image'  => 'nullable',
+      'product_images' => 'nullable|array',
+      'color_id'       => 'nullable|array',
+      'tag_id'         => 'nullable|array',
     ]);
     if ($request->hasFile('preview_image')) {
       $file                  = $request->file('preview_image');
       $data['preview_image'] = $file->store('/uploads', 'public');
     }
+//dd($data);
+    unset($data['color_id'], $data['tag_id'], $data['product_images']);
     $product = Product::query()->create($data);
-    $tags    = $request->get('tags');
+    if ($request->hasFile('product_images')) {
+      $files = $request->file('product_images');
+      foreach ($files as $file) {
+        $url = $file->store('/uploads', 'public');
+        $product->productImages()->create(['url' => $url]);
+      }
+    }
+    $tags = $request->get('tag_id');
     $product->tags()->attach($tags);
-    $colors = $request->get('colors');
+    $colors = $request->get('color_id');
     $product->colors()->attach($colors);
 
     return redirect()->route('admin.products.index');
