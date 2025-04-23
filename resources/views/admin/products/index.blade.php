@@ -46,7 +46,7 @@
                   @foreach ($products as $product)
                     <tr>
                       <td>{{ $product->id }}</td>
-                      <td>{{ $product->name }}</td>
+                      <td>{{ $product->title }}</td>
                       <td>
                        <div class="d-flex align-items-center">
                          <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-light btn-sm mr-2">
