@@ -8,13 +8,17 @@ use App\Models\Color;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
   public function index(): View
   {
-    $products = Product::query()->get();
+    $products = Product::query()->select('status', DB::raw('count(*) as total'))
+      ->groupBy('status')
+      ->get();
+    dd($products);
 
     return view('admin.products.index', compact('products'));
   }
