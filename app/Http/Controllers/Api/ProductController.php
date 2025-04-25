@@ -12,9 +12,11 @@ class ProductController extends Controller
 {
   public function index()
   {
-    $products = Product::query()->get();
+    $products = Product::query()->paginate(10);
 
-    return IndexProductResource::collection($products);
+    return $this->responsePagination($products,IndexProductResource::collection($products));
+//    return $this->error($products);
+//    return $this->success(IndexProductResource::collection($products));
   }
 
   public function show(Product $product)
